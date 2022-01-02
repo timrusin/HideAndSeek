@@ -50,10 +50,10 @@ function computerHides(){
     display.innerText = "Computer is hidding";
     let computerChoices= Array.from({length:4}, () => Math.floor(Math.random()*16))
         console.log(computerChoices)
-    //Need to figure out how to eliminate any dupicates with this array
+        //Need to figure out how to eliminate any dupicates with this array
     cLives = 4; //would be cool to have this count up slowly and randomly while computer "hides" (stretch goal)
     cpuLives.innerText = cLives;
-    computerBoard[computerChoices[0]] = hidding 
+    computerBoard[computerChoices[0]] = hidding
     console.log(computerBoard)
 
     

@@ -24,6 +24,7 @@ h3{
 .tile{
     background-color: black;
     border: 1px white solid;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center; 
