@@ -5,7 +5,7 @@ let pLives = "0";//corosponding to the score taly
 let cLives = "0";//corosponding to the score taly
 let hidding= "HIDE";//simply holding the string that will be displayed
 let seeking= "SEEK";//simply holding the string that will be displayed
-let computerHidding =[]//computer's hidding spots
+let computerHidding = []//computer's hidding spots
 let playerHidding = []//player's hidding spots
 let computerGuesses = []//To keep track of the computer's guesses so it wont pik the same index twice
 let playerGuesses = [] //not sure this arrauy will be neccesary yet
@@ -41,7 +41,7 @@ function playerHides(event){
             return tile.removeEventListener("click", playerHides);
          }   
          
-         console.log(playerChoices)
+         console.log(playerHides)
 }
 
 function computerHides(){
@@ -69,7 +69,7 @@ function computerHides(){
 //and fill those tiles in with "HIDE".  They will need to be transparent so the player can't seem them. 
 //Once this is done we can move on to the "playerTurn" function.. My brain hurts. 
 
-//consider making the player borads buttons - diasble after click - can all have ids
+//consider making the player boards buttons - diasble after click - can all have ids
 
 // OOP
 //player class - score, name, array of choices, array of guesses

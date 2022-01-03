@@ -24,12 +24,14 @@ h3{
 .tile{
     background-color: black;
     border: 1px white solid;
+    text-transform: -5;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center; 
-    font-size: 19px;
+    font-size: 15px;
     cursor: pointer;
+
 }
 
 #display{
