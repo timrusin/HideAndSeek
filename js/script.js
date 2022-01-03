@@ -40,8 +40,7 @@ function playerHides(event){
         else if (tile.innerText != ""){
             return tile.removeEventListener("click", playerHides);
          }   
-         
-         console.log(playerHides)
+    console.log(playerHides)
 }
 
 function computerHides(){
@@ -52,7 +51,11 @@ function computerHides(){
     let hidding3 = computerBoard.pop()
     let hidding4 = computerBoard.pop()
     console.log(hidding1, hidding2, hidding3, hidding4)
-
+    computerBoard.forEach((tile) =>{
+        if (tile.dataset.index = hidding1){
+            return ("yes")
+        }
+    })
     
     // let computerChoices= Array.from({length:4}, () => Math.floor(Math.random()*16))
     //     console.log(computerChoices)
