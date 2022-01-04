@@ -4,10 +4,10 @@ const compTiles = document.querySelectorAll(".comp-tile");
 // console.log(compTiles)
 let pLives = "0";//corosponding to the score taly
 let cLives = "0";//corosponding to the score taly
-const hidding= "HIDE";//simply holding the string that will be displayed
+const hiding= "HIDE";//simply holding the string that will be displayed
 const seeking= "SEEK";//simply holding the string that will be displayed
-let computerHidding = []//computer's hidding spots
-let playerHidding = []//player's hidding spots
+let computerHiding = []//computer's hiding spots
+let playerHiding = []//player's hiding spots
 let computerGuesses = []//To keep track of the computer's guesses so it wont pick the same index twice
 let playerGuesses = [] //not sure this arrauy will be neccesary yet
 const playerBoard = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
@@ -25,16 +25,15 @@ const display = document.getElementById("display-span");
 // const foundSound = new Audio("")
 
 playerTiles.forEach((tile) => tile.addEventListener("click", playerHides));
-
 function playerHides(event){
-    display.classList.add('fade')
-    display.innerText = "Player is hidding";
+    display.style.fontSize= "35px";
+    display.innerText = "Player is hiding";
     pLives ++; 
     playerLives.innerText= (pLives);
     const tile = event.target;
     const tileNumber = tile.dataset.index;
-    tile.innerText= hidding;
-    playerBoard[tileNumber] = hidding;
+    tile.innerText= hiding;
+    playerBoard[tileNumber] = hiding;
         console.log(playerBoard); //this is pushing "hide" into our board on correct index!
         if (pLives === 4){
             return playerTiles.forEach((tile)=>tile.removeEventListener("click", playerHides)), computerHides()}
@@ -45,30 +44,54 @@ function playerHides(event){
 }
 
 function computerHides(){
-    display.innerText = "Computer is hidding";
+    display.classList.add('fade');
+    display.innerText = "Computer is hiding";
+    cLives = +4; //would be cool to have this count up slowly while computer "hides" (stretch goal)
+    cpuLives.innerText = cLives;
     computerBoard.sort((a,b) => 0.5 - Math.random());
-    let hidding1 = computerBoard.pop()
-    let hidding2 = computerBoard.pop()
-    let hidding3 = computerBoard.pop()
-    let hidding4 = computerBoard.pop()
-    // console.log(hidding1, hidding2, hidding3, hidding4)
-    // console.log(compTiles[hidding1]
-    compTiles[hidding1].innerText = hidding
-    compTiles[hidding2].innerText = hidding
-    compTiles[hidding3].innerText = hidding
-    compTiles[hidding4].innerText = hidding
-    //this hides the "hide" text by setting it to black to fall in to the background
-    compTiles[hidding1].classList.add('hide')
-    compTiles[hidding2].classList.add('hide')
-    compTiles[hidding3].classList.add('hide')
-    compTiles[hidding4].classList.add('hide')
+        let hiding1 = computerBoard.pop();
+        let hiding2 = computerBoard.pop();
+        let hiding3 = computerBoard.pop();
+        let hiding4 = computerBoard.pop();
+            compTiles[hiding1].innerText = hiding;
+            compTiles[hiding2].innerText = hiding;
+            compTiles[hiding3].innerText = hiding;
+            compTiles[hiding4].innerText = hiding;
+                compTiles[hiding1].classList.add('hide');
+                compTiles[hiding2].classList.add('hide');
+                compTiles[hiding3].classList.add('hide');
+                compTiles[hiding4].classList.add('hide');
+            let hit1 = compTiles[hiding1];
+            hit1.addEventListener('click', hit);
+            let hit2 = compTiles[hiding2];
+            hit2.addEventListener('click', hit);
+            let hit3 = compTiles[hiding3];
+            hit3.addEventListener('click', hit);
+            let hit4 = compTiles[hiding4];
+            hit4.addEventListener('click', hit);
+        playerTurn()
+}
+function playerTurn(){
+    display.classList.remove('fade');
+    display.style.fontSize = "35px";
+    display.innerText = "Player's turn"
+}
 
+function hit(){
+    cLives --;
+    cpuLives.innerText = cLives;
+}
+
+
+//     }
+//     function hit(){
+//         console.log("working?")
+//     }
     // compTiles[hidding1].classList.add('hide')
 
-    // /add event listeners for those hidding indexes
-    cLives = 4; //would be cool to have this count up slowly while computer "hides" (stretch goal)
-    cpuLives.innerText = cLives;
-    }
+    // /add event listeners for those hiding indexes
+    
+   
     
     // function playerTurn()
 
