@@ -28,7 +28,7 @@ playerTiles.forEach((tile) => tile.addEventListener("click", playerHides));
 function playerHides(event){
     display.style.fontSize= "35px";
     display.innerText = "Player is hiding";
-    pLives ++; 
+    pLives++; 
     playerLives.innerText= (pLives);
     const tile = event.target;
     const tileNumber = tile.dataset.index;
@@ -46,30 +46,31 @@ function playerHides(event){
 function computerHides(){
     display.classList.add('fade');
     display.innerText = "Computer is hiding";
-    cLives = +4; //would be cool to have this count up slowly while computer "hides" (stretch goal)
+    cLives=4; //would be cool to have this count up slowly while computer "hides" (stretch goal)
     cpuLives.innerText = cLives;
     computerBoard.sort((a,b) => 0.5 - Math.random());
-        let hiding1 = computerBoard.pop();
-        let hiding2 = computerBoard.pop();
-        let hiding3 = computerBoard.pop();
-        let hiding4 = computerBoard.pop();
-            compTiles[hiding1].innerText = hiding;
-            compTiles[hiding2].innerText = hiding;
-            compTiles[hiding3].innerText = hiding;
-            compTiles[hiding4].innerText = hiding;
-                compTiles[hiding1].classList.add('hide');
-                compTiles[hiding2].classList.add('hide');
-                compTiles[hiding3].classList.add('hide');
-                compTiles[hiding4].classList.add('hide');
-            let hit1 = compTiles[hiding1];
-            hit1.addEventListener('click', hit);
-            let hit2 = compTiles[hiding2];
-            hit2.addEventListener('click', hit);
-            let hit3 = compTiles[hiding3];
-            hit3.addEventListener('click', hit);
-            let hit4 = compTiles[hiding4];
-            hit4.addEventListener('click', hit);
-        playerTurn()
+    let hiding1 = computerBoard.pop();
+    let hiding2 = computerBoard.pop();
+    let hiding3 = computerBoard.pop();
+    let hiding4 = computerBoard.pop();
+    compTiles[hiding1].innerText = hiding;
+    compTiles[hiding2].innerText = hiding;
+    compTiles[hiding3].innerText = hiding;
+    compTiles[hiding4].innerText = hiding;
+    compTiles[hiding1].classList.add('hide');
+    compTiles[hiding2].classList.add('hide');
+    compTiles[hiding3].classList.add('hide');
+    compTiles[hiding4].classList.add('hide');
+    let hit1 = compTiles[hiding1];
+    hit1.addEventListener('click', hit);
+    let hit2 = compTiles[hiding2];
+    hit2.addEventListener('click', hit);
+    let hit3 = compTiles[hiding3];
+    hit3.addEventListener('click', hit);
+    let hit4 = compTiles[hiding4];
+    hit4.addEventListener('click', hit);
+
+    playerTurn()
 }
 function playerTurn(){
     display.classList.remove('fade');
@@ -78,7 +79,7 @@ function playerTurn(){
 }
 
 function hit(){
-    cLives --;
+    cLives--;
     cpuLives.innerText = cLives;
 }
 
