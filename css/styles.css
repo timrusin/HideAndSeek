@@ -85,5 +85,5 @@ h3{
     }
 }
 .hide{
-    color: black;
+    opacity: .5;
 }

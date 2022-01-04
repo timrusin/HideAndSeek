@@ -1,5 +1,6 @@
 const playerTiles = document.querySelectorAll(".player-tile");
 const compTiles = document.querySelectorAll(".comp-tile");
+
 // console.log(compTiles)
 let pLives = "0";//corosponding to the score taly
 let cLives = "0";//corosponding to the score taly
@@ -7,7 +8,7 @@ const hidding= "HIDE";//simply holding the string that will be displayed
 const seeking= "SEEK";//simply holding the string that will be displayed
 let computerHidding = []//computer's hidding spots
 let playerHidding = []//player's hidding spots
-let computerGuesses = []//To keep track of the computer's guesses so it wont pik the same index twice
+let computerGuesses = []//To keep track of the computer's guesses so it wont pick the same index twice
 let playerGuesses = [] //not sure this arrauy will be neccesary yet
 const playerBoard = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 const computerBoard = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
