@@ -49,33 +49,46 @@ function computerHides(){
     cLives=4; //would be cool to have this count up slowly while computer "hides" (stretch goal)
     cpuLives.innerText = cLives;
     computerBoard.sort((a,b) => 0.5 - Math.random());
-    let hiding1 = computerBoard.pop();
-    let hiding2 = computerBoard.pop();
-    let hiding3 = computerBoard.pop();
-    let hiding4 = computerBoard.pop();
-    compTiles[hiding1].innerText = hiding;
-    compTiles[hiding2].innerText = hiding;
-    compTiles[hiding3].innerText = hiding;
-    compTiles[hiding4].innerText = hiding;
-    compTiles[hiding1].classList.add('hide');
-    compTiles[hiding2].classList.add('hide');
-    compTiles[hiding3].classList.add('hide');
-    compTiles[hiding4].classList.add('hide');
-    let hit1 = compTiles[hiding1];
-    hit1.addEventListener('click', hit);
-    let hit2 = compTiles[hiding2];
-    hit2.addEventListener('click', hit);
-    let hit3 = compTiles[hiding3];
-    hit3.addEventListener('click', hit);
-    let hit4 = compTiles[hiding4];
-    hit4.addEventListener('click', hit);
-
+    for (let i=0; i<4; i++){
+        let spacePos = computerBoard.pop();
+        console.log(spacePos)
+        computerHiding.push(spacePos)
+        compTiles[spacePos].innerText = hiding;
+        compTiles[spacePos].classList.add('hide');
+        compTiles[spacePos].addEventListener('click', hit)
+    }
     playerTurn()
 }
+//my original process before buiilding it into the loop above
+    // let hiding1 = computerBoard.pop();
+    // let hiding2 = computerBoard.pop();
+    // let hiding3 = computerBoard.pop();
+    // let hiding4 = computerBoard.pop();
+    // compTiles[hiding1].innerText = hiding;
+    // compTiles[hiding2].innerText = hiding;
+    // compTiles[hiding3].innerText = hiding;
+    // compTiles[hiding4].innerText = hiding;
+    // compTiles[hiding1].classList.add('hide');
+    // compTiles[hiding2].classList.add('hide');
+    // compTiles[hiding3].classList.add('hide');
+    // compTiles[hiding4].classList.add('hide');
+    // let hit1 = compTiles[hiding1];
+    // hit1.addEventListener('click', hit);
+    // let hit2 = compTiles[hiding2];
+    // hit2.addEventListener('click', hit);
+    // let hit3 = compTiles[hiding3];
+    // hit3.addEventListener('click', hit);
+    // let hit4 = compTiles[hiding4];
+    // hit4.addEventListener('click', hit);
+
+
+
 function playerTurn(){
     display.classList.remove('fade');
     display.style.fontSize = "35px";
     display.innerText = "Player's turn"
+    console.log(computerHiding)
+
 }
 
 function hit(){
