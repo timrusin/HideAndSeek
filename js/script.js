@@ -40,11 +40,10 @@ function playerHides(event){
         else if (tile.innerText != ""){
             return tile.removeEventListener("click", playerHides);
          }   
-    console.log(playerHides)
+    // console.log(playerHides)
 }
 
 function computerHides(){
-    display.classList.add('fade')
     display.innerText = "Computer is hidding";
     computerBoard.sort((a,b) => 0.5 - Math.random());
     let hidding1 = computerBoard.pop()
@@ -57,6 +56,14 @@ function computerHides(){
     compTiles[hidding2].innerText = hidding
     compTiles[hidding3].innerText = hidding
     compTiles[hidding4].innerText = hidding
+    //this hides the "hide" text by setting it to black to fall in to the background
+    compTiles[hidding1].classList.add('hide')
+    compTiles[hidding2].classList.add('hide')
+    compTiles[hidding3].classList.add('hide')
+    compTiles[hidding4].classList.add('hide')
+
+    // compTiles[hidding1].classList.add('hide')
+
     // /add event listeners for those hidding indexes
     cLives = 4; //would be cool to have this count up slowly while computer "hides" (stretch goal)
     cpuLives.innerText = cLives;
