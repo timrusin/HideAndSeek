@@ -1,10 +1,10 @@
 const playerTiles = document.querySelectorAll(".player-tile");
 const compTiles = document.querySelectorAll(".comp-tile");
-
+console.log(compTiles)
 let pLives = "0";//corosponding to the score taly
 let cLives = "0";//corosponding to the score taly
-let hidding= "HIDE";//simply holding the string that will be displayed
-let seeking= "SEEK";//simply holding the string that will be displayed
+const hidding= "HIDE";//simply holding the string that will be displayed
+const seeking= "SEEK";//simply holding the string that will be displayed
 let computerHidding = []//computer's hidding spots
 let playerHidding = []//player's hidding spots
 let computerGuesses = []//To keep track of the computer's guesses so it wont pik the same index twice
@@ -51,21 +51,24 @@ function computerHides(){
     let hidding3 = computerBoard.pop()
     let hidding4 = computerBoard.pop()
     console.log(hidding1, hidding2, hidding3, hidding4)
-    computerBoard.forEach((tile) =>{
-        if (tile.dataset.index = hidding1){
-            return ("yes")
-        }
-    })
+    console.log(compTiles[hidding1])
+    compTiles[hidding1].innerText = hidding
+    compTiles[hidding2].innerText = hidding
+    compTiles[hidding3].innerText = hidding
+    compTiles[hidding4].innerText = hidding
+   
+    cLives = 4; //would be cool to have this count up slowly and randomly while computer "hides" (stretch goal)
+    cpuLives.innerText = cLives;
+    }
     
     // let computerChoices= Array.from({length:4}, () => Math.floor(Math.random()*16))
     //     console.log(computerChoices)
         //Need to figure out how to eliminate any dupicates with this array
         //Shuffle computerBoard Array, pop off four numbers***
-    cLives = 4; //would be cool to have this count up slowly and randomly while computer "hides" (stretch goal)
-    cpuLives.innerText = cLives;
+    
     // computerBoard[computerChoices[0]] = hidding
     // console.log(computerBoard)
-}
+
     
 
 
