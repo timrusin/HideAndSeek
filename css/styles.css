@@ -24,7 +24,6 @@ h3{
 .tile{
     background-color: black;
     border: 1px white solid;
-    text-transform: -5;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -69,14 +68,19 @@ h3{
     padding-bottom: 5px;
 }
 
-.hide-hover:hover::after{
-    color:white;
-    content: "HIDE";
-    opacity: .4;
+.fade{
+    font-size: 35px;
+    animation-name: fade;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-duration: 1.5s;
+    animation-direction: alternate;
 }
-
-.seek-hover:hover::after{
-    color:white;
-    content: "SEEK";
-    opacity: .4;
+@keyframes fade{
+    0%,45%{
+        opacity: 0;
+}
+    100%{
+        opacity: 1;
+    }
 }

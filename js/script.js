@@ -1,6 +1,6 @@
 const playerTiles = document.querySelectorAll(".player-tile");
 const compTiles = document.querySelectorAll(".comp-tile");
-console.log(compTiles)
+// console.log(compTiles)
 let pLives = "0";//corosponding to the score taly
 let cLives = "0";//corosponding to the score taly
 const hidding= "HIDE";//simply holding the string that will be displayed
@@ -15,7 +15,7 @@ const computerBoard = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 //Elements
 const playerLives = document.getElementById("player-lives");
 const cpuLives = document.getElementById("cpu-lives");
-const display = document.getElementById("display"); 
+const display = document.getElementById("display-span"); 
 
 //still need to build the intro screen, game over screens and restart button.
 //also add sounds and music eventually
@@ -26,12 +26,12 @@ const display = document.getElementById("display");
 playerTiles.forEach((tile) => tile.addEventListener("click", playerHides));
 
 function playerHides(event){
+    display.classList.add('fade')
     display.innerText = "Player is hidding";
     pLives ++; 
     playerLives.innerText= (pLives);
     const tile = event.target;
     const tileNumber = tile.dataset.index;
-    // playerChoices.push; Not sure how to get these choices to push to the global scope array
     tile.innerText= hidding;
     playerBoard[tileNumber] = hidding;
         console.log(playerBoard); //this is pushing "hide" into our board on correct index!
@@ -44,22 +44,30 @@ function playerHides(event){
 }
 
 function computerHides(){
+    display.classList.add('fade')
     display.innerText = "Computer is hidding";
     computerBoard.sort((a,b) => 0.5 - Math.random());
     let hidding1 = computerBoard.pop()
     let hidding2 = computerBoard.pop()
     let hidding3 = computerBoard.pop()
     let hidding4 = computerBoard.pop()
-    console.log(hidding1, hidding2, hidding3, hidding4)
-    console.log(compTiles[hidding1])
+    // console.log(hidding1, hidding2, hidding3, hidding4)
+    // console.log(compTiles[hidding1]
     compTiles[hidding1].innerText = hidding
     compTiles[hidding2].innerText = hidding
     compTiles[hidding3].innerText = hidding
     compTiles[hidding4].innerText = hidding
-   
-    cLives = 4; //would be cool to have this count up slowly and randomly while computer "hides" (stretch goal)
+    // /add event listeners for those hidding indexes
+    cLives = 4; //would be cool to have this count up slowly while computer "hides" (stretch goal)
     cpuLives.innerText = cLives;
     }
+    
+    // function playerTurn()
+
+    //playerTurn
+    
+   
+    
     
     // let computerChoices= Array.from({length:4}, () => Math.floor(Math.random()*16))
     //     console.log(computerChoices)
