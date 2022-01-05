@@ -65,9 +65,9 @@ function computerHides(){
 }
 //player trys to find the computers hiding spots - 1 guess at a time
 function playerTurnDisplay(){ 
+    turn = "Player"
     display.classList.remove('fade');
     display.innerText = "Player's turn";
-    turn = "Player";
     console.log(computerHiding);
 }
 
@@ -82,34 +82,45 @@ function playerClick(event){ //this function is managing the players clicks on t
     }else{ 
         cLives--;
         cpuLives.innerText = cLives;
-        tile.classList.add('found')
+        tile.classList.add('c-found')
         tile.innerText = "FOUND"
         computerTurnDisplay()
         computerSearch()
     }
-     //index of is type sensative, had to parseInt tileNumber
 }
+
+
 
 function computerTurnDisplay(){
     turn = "Computer";
     display.classList.add('fade');
     display.innerText = "Computer's turn";
-    console.log(turn);
 }
 
+
 function computerSearch(){
+    if (turn !== "Computer") return;
     const randomNumber = Math.floor(Math.random()*16);
     console.log(randomNumber);
     computerGuesses.push(randomNumber);
     console.log(playerHiding);
-    const spacePos = playerTiles[randomNumber];
+    const tile = playerTiles[randomNumber];
     
     //still need a way to make sure the computer doesn't guess the same number twice
     if (playerHiding.indexOf(randomNumber) === -1){
-        spacePos.innerText = seeking;
-        spacePos.classList.add ('playerSeek');
-    }else{console.log("match!")}; //class of red and what I did for the player
-
+        tile.innerText = seeking;
+        tile.classList.add ('playerSeek');
+        //need conditional to check for win
+        playerTurnDisplay()
+        playerClick()
+    }else{
+        pLives --;
+        playerLives.innerText = pLives;
+        tile.classList.add('p-found')
+        tile.innerText = "FOUND"
+        playerTurnDisplay()
+        playerClick()
+    }
 }
 
 //DONT FORGET TO UPDATE THE README PAGE - CHECK PROJECT CRITERIA!!!

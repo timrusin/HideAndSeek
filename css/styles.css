@@ -86,8 +86,13 @@ h3{
     }
 }
 
-.found{ 
+.c-found{ 
     background-color: rgb(114, 238, 114); /*lets come back to this to make it flash in, bootstrap?*/
+    font-size: .75em;
+    color: black;
+}
+.p-found{
+    background-color: red;
     font-size: .75em;
     color: black;
 }
