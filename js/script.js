@@ -14,7 +14,7 @@ const computerGuesses = [];  //To keep track of the computer's guesses so it won
 const playerGuesses = []; //not sure this array will be necessary yet
 const playerBoard = [];
 const computerBoard = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];  //.fill for array(look up)
-let turn = "Player"
+let turn = ""
 
 //Taly boaard elements
 const playerLives = document.getElementById("player-lives");
@@ -34,9 +34,9 @@ function playerHides(event){
     playerLives.innerText= pLives;
     const tile = event.target;
     const tileNumber = tile.dataset.index;  //look into query for this attribute as opposed to event.target
-    tile.innerText= hiding;                  
-    playerBoard[tileNumber] = hiding;
-     console.log(playerBoard); //this is pushing "hide" into our board on correct index!
+    tile.innerText= hiding;                 
+    playerHiding.push(tileNumber) 
+     console.log(playerHiding); //pushing to the playerHiding array to be accesed by the CPU
     if (pLives === 4){
         playerTiles.forEach((tile)=>tile.removeEventListener("click", playerHides))  //consider resetPlayer function to reset clicks
         computerHides()
@@ -76,15 +76,33 @@ function playerClick(event){
     if (turn !== "Player") return;  //if it is the computers turn I wont be able to run the rest of the function
     if (computerHiding.indexOf(tileNumber) === -1){
         tile.innerText=seeking;
+        computerTurn()
     }else{ 
-        hit()
+        hitComputer()
     }
      //index of is type sensative, had to parseInt tileNumber
 }
-function hit(){
+function hitComputer(){
+    if (turn !== "Player") return;
     cLives--;
     cpuLives.innerText = cLives;
+    computerTurn()
     //need to change the display of the hidden piece, to show we've found the spot (sound) 
+}
+console.log(turn)
+function computerTurn(){
+    turn === "Computer";
+    display.classList.add('fade');
+    display.innerText = "Computer's turn";
+    //need another setInterval here to slow the coputer down a bit
+    const tile = playerBoard
+    let computerGuess = Math.floor(Math.random());
+    console.log(computerGuess)
+    if (computerGuess === playerBoard.indexOf()){
+        tile.innerText = seeking;
+    }
+    playerTurn()
+    // if (playerBoard.indexOf)
 }
 
 
