@@ -33,12 +33,6 @@ h3{
     cursor: pointer;
 }
 
-.tile > span{  /*Adjust clickable range with height or something*/
-    width: 100%;
-    min-height: 10px;
-    text-align: center;
-}
-
 #display{
     margin-top: 0;
     margin-bottom: 15px;
@@ -92,7 +86,8 @@ h3{
     }
 }
 
-.hide{
-    opacity: .25;    
+.found{ 
+    background-color: rgb(114, 238, 114); /*lets come back to this to make it flash in, bootstrap?*/
+    font-size: .75em;
+    color: black;
 }
-/* No need to have the Hide text displayed for the computers */

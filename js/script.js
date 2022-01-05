@@ -44,7 +44,7 @@ function playerHides(event){
         tile.removeEventListener("click", playerHides);  
     }   
 }
-
+//computer choices it's hiding spots 
 function computerHides(){
     display.classList.add('fade');
     display.innerText = "Computer is hiding";
@@ -57,53 +57,64 @@ function computerHides(){
         cpuLives.innerText = cLives;
         if (cLives === 4){
             clearInterval(compTimer);
-            playerTurn();
+            playerTurnDisplay();
         }
     }, 1000);
     console.log(computerHiding)
 }
-
-function playerTurn(){ 
+//player trys to find the computers hiding spots - 1 guess at a time
+function playerTurnDisplay(){ 
     display.classList.remove('fade');
     display.innerText = "Player's turn";
     turn = "Player";
     console.log(computerHiding);
 }
 
-function playerClick(event){
+function playerClick(event){ //this function is managing the players clicks on the computer's baord
     const tile = event.target;
     const tileNumber = parseInt(tile.dataset.index);
     if (turn !== "Player") return;  //if it is the computers turn I wont be able to run the rest of the function
     if (computerHiding.indexOf(tileNumber) === -1){
         tile.innerText=seeking;
-        computerTurn()
+        computerTurnDisplay()
+        computerSearch()
     }else{ 
-        hitComputer()
+        cLives--;
+        cpuLives.innerText = cLives;
+        tile.classList.add('found')
+        tile.innerText = "FOUND"
+        computerTurnDisplay()
+        computerSearch()
     }
      //index of is type sensative, had to parseInt tileNumber
 }
-function hitComputer(){
-    if (turn !== "Player") return;
-    cLives--;
-    cpuLives.innerText = cLives;
-    computerTurn()
-    //need to change the display of the hidden piece, to show we've found the spot (sound) 
-}
-console.log(turn)
-function computerTurn(){
-    turn === "Computer";
+
+function computerTurnDisplay(){
+    turn = "Computer";
     display.classList.add('fade');
     display.innerText = "Computer's turn";
-    //need another setInterval here to slow the coputer down a bit
-    const tile = playerBoard
-    let computerGuess = Math.floor(Math.random());
-    console.log(computerGuess)
-    if (computerGuess === playerBoard.indexOf()){
-        tile.innerText = seeking;
-    }
-    playerTurn()
-    // if (playerBoard.indexOf)
+    console.log(turn)
 }
+
+function computerSearch(){
+    const randomNumber = Math.floor(Math.random()*16)
+    console.log(randomNumber)
+    computerGuesses.push(randomNumber)
+    if (computerGuesses.some(randomNumber) === randomNumber){
+        console.log("true")
+    }
+    console.log(computerGuesses)
+
+}
+
+
+
+
+
+
+    // playerTurn()
+    // if (playerBoard.indexOf)
+
 
 
 //     }
