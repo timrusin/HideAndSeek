@@ -1,19 +1,33 @@
+//MVP TO DOS!
+//- why error on 
+//- conditional to check for end of game
+//- A way to keep the computer from guessing the same numbers
+//- Game Over screens with restart buttons
+//- timeOut for the computer's turns to display COmputer's Turn in the box for a few seconds
+
+//Stretch Goals
+//- Splash Screen with instructions
+//- Custom fonts
+//- more animation with hits and score
+//- Sound effects for hidding, clicks, and hits
+//-custmom music - splash screen, game play, game over screens(2)
+
+
 const playerTiles = document.querySelectorAll(".player-tile");
 const compTiles = document.querySelectorAll(".comp-tile")
 playerTiles.forEach((tile) => tile.addEventListener("click", playerHides));
 compTiles.forEach((tile) => tile.addEventListener("click", playerClick));
 
 //Variables
-let pLives = 0;  //score taly
-let cLives = 0;  //score taly
-const hiding = "HIDE";  //simply holding the string that will be displayed
-const seeking = "SEEK";  //simply holding the string that will be displayed
-const computerHiding = [];  //computer's hiding spots
-const playerHiding = [];  //player's hiding spots
-const computerGuesses = [];  //To keep track of the computer's guesses so it wont pick the same index twice
-const playerGuesses = []; //not sure this array will be necessary yet
+let pLives = 0; 
+let cLives = 0;  
+const hiding = "HIDE";  
+const seeking = "SEEK";  
+const computerHiding = [];  
+const playerHiding = [];  
+const computerGuesses = [];  
 const playerBoard = [];
-const computerBoard = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];  //.fill for array(look up)
+const computerBoard = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];  //.fill for array(look up)//////////
 let turn = ""
 
 //Taly boaard elements
@@ -21,12 +35,7 @@ const playerLives = document.getElementById("player-lives");
 const cpuLives = document.getElementById("cpu-lives");
 const display = document.getElementById("display-span"); 
 
-//still need to build the intro screen, game over screens and restart button.
-//also add sounds and music eventually
-// const music = new Audio("")
-// const clickSound = new Audio("")
-// const foundSound = new Audio("")
-
+//This is where the player chooses thier hidding spots
 function playerHides(event){
     display.style.fontSize= "35px";  //consider making a separate class
     display.innerText = "Player is hiding";
@@ -34,7 +43,6 @@ function playerHides(event){
     playerLives.innerText= pLives;
     const tile = event.target;
     const tileNumber = parseInt(tile.dataset.index);  //look into query for this attribute as opposed to event.target
-    
     tile.innerText= hiding;                 
     playerHiding.push(tileNumber) 
      console.log(playerHiding); //pushing to the playerHiding array to be accesed by the CPU
@@ -45,7 +53,8 @@ function playerHides(event){
         tile.removeEventListener("click", playerHides);  
     }   
 }
-//computer choices it's hiding spots 
+
+//This is where the computer chooses it's hidding spots
 function computerHides(){
     display.classList.add('fade');
     display.innerText = "Computer is hiding";
@@ -63,18 +72,19 @@ function computerHides(){
     }, 1000);
     console.log(computerHiding)
 }
-//player trys to find the computers hiding spots - 1 guess at a time
+
+
+//this function is managing the players game play
 function playerTurnDisplay(){ 
     turn = "Player"
     display.classList.remove('fade');
     display.innerText = "Player's turn";
     console.log(computerHiding);
 }
-
-function playerClick(event){ //this function is managing the players clicks on the computer's baord
-    const tile = event.target;
+function playerClick(event){ 
+    const tile = event.target
     const tileNumber = parseInt(tile.dataset.index);
-    if (turn !== "Player") return;  //if it is the computers turn I wont be able to run the rest of the function
+    if (turn !== "Player") return;  
     if (computerHiding.indexOf(tileNumber) === -1){
         tile.innerText=seeking;
         computerTurnDisplay()
@@ -86,27 +96,23 @@ function playerClick(event){ //this function is managing the players clicks on t
         tile.innerText = "FOUND"
         computerTurnDisplay()
         computerSearch()
+        //still need conditional to check for win////////////////////
     }
 }
 
 
-
+//These functions are managing the computer's game play
 function computerTurnDisplay(){
     turn = "Computer";
     display.classList.add('fade');
     display.innerText = "Computer's turn";
 }
-
-
 function computerSearch(){
     if (turn !== "Computer") return;
     const randomNumber = Math.floor(Math.random()*16);
-    console.log(randomNumber);
     computerGuesses.push(randomNumber);
-    console.log(playerHiding);
     const tile = playerTiles[randomNumber];
-    
-    //still need a way to make sure the computer doesn't guess the same number twice
+    //still need a way to make sure the computer doesn't guess the same number twice///////////////////////
     if (playerHiding.indexOf(randomNumber) === -1){
         tile.innerText = seeking;
         tile.classList.add ('playerSeek');
