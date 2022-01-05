@@ -33,7 +33,8 @@ function playerHides(event){
     pLives++; //consider having a new function to break things up a bit more (separate display stuff into it's own fuctions)
     playerLives.innerText= pLives;
     const tile = event.target;
-    const tileNumber = tile.dataset.index;  //look into query for this attribute as opposed to event.target
+    const tileNumber = parseInt(tile.dataset.index);  //look into query for this attribute as opposed to event.target
+    
     tile.innerText= hiding;                 
     playerHiding.push(tileNumber) 
      console.log(playerHiding); //pushing to the playerHiding array to be accesed by the CPU
@@ -93,63 +94,23 @@ function computerTurnDisplay(){
     turn = "Computer";
     display.classList.add('fade');
     display.innerText = "Computer's turn";
-    console.log(turn)
+    console.log(turn);
 }
 
 function computerSearch(){
-    const randomNumber = Math.floor(Math.random()*16)
-    console.log(randomNumber)
-    computerGuesses.push(randomNumber)
-    if (computerGuesses.some(randomNumber) === randomNumber){
-        console.log("true")
-    }
-    console.log(computerGuesses)
+    const randomNumber = Math.floor(Math.random()*16);
+    console.log(randomNumber);
+    computerGuesses.push(randomNumber);
+    console.log(playerHiding);
+    const spacePos = playerTiles[randomNumber];
+    
+    //still need a way to make sure the computer doesn't guess the same number twice
+    if (playerHiding.indexOf(randomNumber) === -1){
+        spacePos.innerText = seeking //class of redtext
+    }else{console.log("match!")}; //class of red and what I did for the player
 
 }
 
 
-
-
-
-
-    // playerTurn()
-    // if (playerBoard.indexOf)
-
-
-
-//     }
-//     function hit(){
-//         console.log("working?")
-//     }
-    // compTiles[hidding1].classList.add('hide')
-
-    // /add event listeners for those hiding indexes
-    
-   
-    
-    // function playerTurn()
-
-    //playerTurn
-    
-   
-    
-    
-    // let computerChoices= Array.from({length:4}, () => Math.floor(Math.random()*16))
-    //     console.log(computerChoices)
-        //Need to figure out how to eliminate any dupicates with this array
-        //Shuffle computerBoard Array, pop off four numbers***
-    
-    // computerBoard[computerChoices[0]] = hidding
-    // console.log(computerBoard)
-
-    
-
-
-//and fill those tiles in with "HIDE".  They will need to be transparent so the player can't seem them. 
-//Once this is done we can move on to the "playerTurn" function.. My brain hurts. 
-
-//consider making the player boards buttons - diasble after click - can all have ids
-
-// OOP
-//player class - score, name, array of choices, array of guesses
-//back and 
+// for the random number matches the players hidding Array, if it isn't 
+//creating an array with the numbers in it originally to pull from and move to the guesses
