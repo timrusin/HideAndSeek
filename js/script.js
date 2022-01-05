@@ -1,9 +1,11 @@
 const playerTiles = document.querySelectorAll(".player-tile");
 const compTiles = document.querySelectorAll(".comp-tile")
+playerTiles.forEach((tile) => tile.addEventListener("click", playerHides));
+compTiles.forEach((tile) => tile.addEventListener("click", playerClick));
 
 //Variables
-let pLives = 0;  //coresponding to the score taly
-let cLives = 0;  //coresponding to the score taly
+let pLives = 0;  //score taly
+let cLives = 0;  //score taly
 const hiding = "HIDE";  //simply holding the string that will be displayed
 const seeking = "SEEK";  //simply holding the string that will be displayed
 const computerHiding = [];  //computer's hiding spots
@@ -14,7 +16,7 @@ const playerBoard = [];
 const computerBoard = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];  //.fill for array(look up)
 let turn = "Player"
 
-//DOM Elements
+//Taly boaard elements
 const playerLives = document.getElementById("player-lives");
 const cpuLives = document.getElementById("cpu-lives");
 const display = document.getElementById("display-span"); 
@@ -25,9 +27,6 @@ const display = document.getElementById("display-span");
 // const clickSound = new Audio("")
 // const foundSound = new Audio("")
 
-//Player hide function
-playerTiles.forEach((tile) => tile.addEventListener("click", playerHides));
-compTiles.forEach((tile) => tile.addEventListener("click", clickTile));
 function playerHides(event){
     display.style.fontSize= "35px";  //consider making a separate class
     display.innerText = "Player is hiding";
@@ -53,10 +52,7 @@ function computerHides(){
 
     const compTimer = setInterval(() => {
         let spacePos = computerBoard.pop();
-        console.log(spacePos);
         computerHiding.push(spacePos);
-        compTiles[spacePos].innerText = hiding;
-        compTiles[spacePos].classList.add('hide');
         cLives++;
         cpuLives.innerText = cLives;
         if (cLives === 4){
@@ -64,16 +60,17 @@ function computerHides(){
             playerTurn();
         }
     }, 1000);
+    console.log(computerHiding)
 }
 
-function playerTurn(){
+function playerTurn(){ 
     display.classList.remove('fade');
-    display.style.fontSize = "35px";
     display.innerText = "Player's turn";
     turn = "Player";
     console.log(computerHiding);
 }
-function clickTile(event){
+
+function playerClick(event){
     const tile = event.target;
     const tileNumber = parseInt(tile.dataset.index);
     if (turn !== "Player") return;  //if it is the computers turn I wont be able to run the rest of the function
