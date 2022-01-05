@@ -106,11 +106,13 @@ function computerSearch(){
     
     //still need a way to make sure the computer doesn't guess the same number twice
     if (playerHiding.indexOf(randomNumber) === -1){
-        spacePos.innerText = seeking //class of redtext
+        spacePos.innerText = seeking;
+        spacePos.classList.add ('playerSeek');
     }else{console.log("match!")}; //class of red and what I did for the player
 
 }
 
+//DONT FORGET TO UPDATE THE README PAGE - CHECK PROJECT CRITERIA!!!
 
 // for the random number matches the players hidding Array, if it isn't 
 //creating an array with the numbers in it originally to pull from and move to the guesses
