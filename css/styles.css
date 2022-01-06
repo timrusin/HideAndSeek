@@ -1,0 +1,133 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    color: whitesmoke;
+}
+
+h1{
+    margin-left: 10px;
+}
+
+h3{
+    text-align: center;
+    margin-top: 4px;
+}
+
+.board-container{
+    display: grid;
+    grid-template-columns: 50px 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px; 
+    margin: 0 auto;
+}
+
+.tile{
+    background-color: black;
+    border: 1px white solid;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#display{
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding: 5px;
+    width: 300px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    text-justify: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid white;
+}
+
+.taly-box{
+    padding-top: 2px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 195px;
+    height: 50px;
+    border: solid white .05em;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: rgb(14, 14, 104);
+}
+
+.score{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 2em;
+    font-weight: 100;
+    padding-bottom: 5px;
+}
+
+.fade{
+    font-size: 35px;
+    animation-name: fade;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-direction: alternate;
+}
+@keyframes fade{
+    0%,45%{
+        opacity: 1;
+}
+    100%{
+        opacity: 0;
+    }
+}
+
+.c-found{ 
+    background-color: rgb(114, 238, 114); /*lets come back to this to make it flash in, bootstrap?*/
+    font-size: .75em;
+    color: black;
+}
+.p-found{
+    background-color: red;
+    font-size: .75em;
+    color: black;
+}
+.playerSeek{
+    color: rgb(235, 34, 34);
+}
+
+.winner {
+    font-size: 3em;
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 100%;
+    background-color: black;
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .loser{
+    font-size: 3em;
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 100%;
+    background-color: black;
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  
