@@ -1,13 +1,14 @@
 //MVP TO DOS!
 //- why error on 87?
 
-//Stretch Goals
+//TODOs
+//- fix up the styling on the gameover screens
 //- Splash Screen with instructions
 //- Custom fonts
 //- more animation with hits and score
 //-custmom music - splash screen, game play, game over screens(2)
 
-//DONT FORGET TO UPDATE THE README PAGE - CHECK PROJECT CRITERIA!!!
+//DONT FORGET TO UPDATE THE README PAGE - CHECK PROJECT CRITERIA FOR PRESENTATION!!
 
 const playerTiles = document.querySelectorAll(".player-tile");
 const compTiles = document.querySelectorAll(".comp-tile");
@@ -45,24 +46,23 @@ const display = document.getElementById("display-span");
 //This is where the player chooses thier hidding spots
 function playerHides(event){
     turn = "Player";
-    display.style.fontSize= "35px";  //consider making a separate class
+    display.style.fontSize= "35px";  
     display.innerText = "Player is hiding";
-    pLives++; //consider having a new function to break things up a bit more (separate display stuff into it's own fuctions)
+    pLives++; 
     playerLives.innerText= pLives;
     const tile = event.target;
-    const tileNumber = parseInt(tile.dataset.index);  //look into query for this attribute as opposed to event.target
+    const tileNumber = parseInt(tile.dataset.index);  
     tile.innerText= hiding;                 
     playerHiding.push(tileNumber) 
-     console.log(playerHiding); //pushing to the playerHiding array to be accesed by the CPU
+     console.log(playerHiding); 
     if (pLives === 4){
-        playerTiles.forEach((tile)=>tile.removeEventListener("click", playerHides))  //consider resetPlayer function to reset clicks
+        playerTiles.forEach((tile)=>tile.removeEventListener("click", playerHides))  
         computerHides()
     }else if (tile.innerText !== ""){
         tile.removeEventListener("click", playerHides);  
     }   
     click1.play();
 }
-
 
 //This is where the computer chooses it's hidding spots
 function computerHides(){

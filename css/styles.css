@@ -9,7 +9,7 @@ body{
 
 h1{
     font-family: 'Cinzel', serif;
-    font-size: 2em;
+    font-size: 2.5em;
     margin: 0;
 }
 
@@ -106,10 +106,10 @@ h3{
     color: rgb(235, 34, 34);
 }
 .title{
-    font-size: em;
+    
 }
 .winner {
-    font-size: 3em;
+    font-size: 2em;
     width: 500px;
     position: absolute;
     top: 50%;
@@ -124,7 +124,7 @@ h3{
   }
 
   .loser{
-    font-size: 3em;
+    font-size: 2em;
     width: 500px;
     position: absolute;
     top: 50%;
