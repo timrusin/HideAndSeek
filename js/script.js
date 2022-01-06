@@ -1,6 +1,6 @@
 //MVP TO DOS!
 //- why error on 87?
-//- Game Over screens with restart buttons
+//- clear and reset baord for new game
 
 //Stretch Goals
 //- Splash Screen with instructions
@@ -17,7 +17,9 @@ playerTiles.forEach((tile) => tile.addEventListener("click", playerHides));
 compTiles.forEach((tile) => tile.addEventListener("click", playerSearch));
 const winner = document.querySelector(".winner");
 const loser = document.querySelector(".loser");
-const restartBtnWin = document.getElementById("restart-button-win").onclick = restart;
+const restartBtn = document.querySelectorAll(".restart-button");
+restartBtn.forEach((button) => button.addEventListener("click", restart))
+
 // const restartBtnlose = document.getElementById("restart-button-lose").onclick = restart;
 
 let pLives = 0; 
@@ -84,9 +86,7 @@ function playerTurnDisplay(){
     console.log(compHiding);
 }
 function playerSearch(event){ 
-    console.log(event)
     const tile = event.target;
-    console.log(tile)
     const tileNumber = parseInt(tile.dataset.index);
     if (turn !== "Player") return;  
     if (compHiding.indexOf(tileNumber) === -1){
@@ -155,15 +155,5 @@ function gameOverLose(){
 }
 
 function restart(){
-    console.log("working")
-    winner.style.opacity = "0";
-    loser.style.opacity = "0";
-    pLives = 0;
-    cLives = 0;
-    playerBoard = [];
-    compBoard = Array.from (Array(16).keys());
-    playerHiding = [];
-    compHiding = [];  
-    compGuesses = [];
-    compOptions = Array.from (Array(16).keys());
+    window.location.reload();
 }
