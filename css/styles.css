@@ -102,12 +102,14 @@ h3{
     font-size: .75em;
     color: black;
 }
-.playerSeek{
+.computerSeek{
     color: rgb(235, 34, 34);
 }
-.title{
-    
+
+.playerSeek{
+    color: rgb(114, 238, 114);
 }
+
 .winner {
     font-size: 2em;
     width: 500px;

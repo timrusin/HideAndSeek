@@ -98,8 +98,9 @@ function playerSearch(event){
     if (turn !== "Player") return;  
     if (compHiding.indexOf(tileNumber) === -1){
         tile.innerText=seeking;
+        tile.classList.add ('playerSeek');
         computerTurnDisplay()
-        const computerTimeOut = setTimeout(computerSearch, 2500);
+        const computerTimeOut = setTimeout(computerSearch, 2000);
     }else{ 
         cLives --;
         cpuLives.innerText = cLives;
@@ -110,7 +111,7 @@ function playerSearch(event){
             gameOverWin()
         }else{
             computerTurnDisplay()
-            const computerTimeOut = setTimeout(computerSearch, 2500);
+            const computerTimeOut = setTimeout(computerSearch, 2000);
         }
     }
 }
@@ -135,7 +136,7 @@ function computerSearch(){
 
     if (playerHiding.indexOf(guess) === -1){
         tile.innerText = seeking;
-        tile.classList.add ('playerSeek');
+        tile.classList.add ('computerSeek');
         playerTurnDisplay()
         playerSearch()
     }else{
