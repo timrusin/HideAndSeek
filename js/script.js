@@ -1,9 +1,6 @@
 //MVP TO DOS!
-//- why error on 
-//- conditional to check for end of game
-//- A way to keep the computer from guessing the same numbers
+//- why error on 87?
 //- Game Over screens with restart buttons
-//- timeOut for the computer's turns to display COmputer's Turn in the box for a few seconds
 
 //Stretch Goals
 //- Splash Screen with instructions
@@ -12,22 +9,25 @@
 //- Sound effects for hidding, clicks, and hits
 //-custmom music - splash screen, game play, game over screens(2)
 
+//DONT FORGET TO UPDATE THE README PAGE - CHECK PROJECT CRITERIA!!!
 
 const playerTiles = document.querySelectorAll(".player-tile");
-const compTiles = document.querySelectorAll(".comp-tile")
+const compTiles = document.querySelectorAll(".comp-tile");
 playerTiles.forEach((tile) => tile.addEventListener("click", playerHides));
-compTiles.forEach((tile) => tile.addEventListener("click", playerClick));
+compTiles.forEach((tile) => tile.addEventListener("click", playerSearch));
+const winner = document.querySelector(".winner");
+const restartBtn = document.getElementById("restart-button").onclick = resetGame;
 
-//Variables
 let pLives = 0; 
 let cLives = 0;  
 const hiding = "HIDE";  
 const seeking = "SEEK";  
-const computerHiding = [];  
-const playerHiding = [];  
-const computerGuesses = [];  
-const playerBoard = [];
-const computerBoard = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];  //.fill for array(look up)//////////
+let compHiding = [];  
+let playerHiding = [];  
+let compOptions = Array.from (Array(16).keys());
+let compGuesses = [];  
+let playerBoard = [];
+let compBoard = Array.from (Array(16).keys());
 let turn = ""
 
 //Taly boaard elements
@@ -37,6 +37,7 @@ const display = document.getElementById("display-span");
 
 //This is where the player chooses thier hidding spots
 function playerHides(event){
+    turn = "Player"
     display.style.fontSize= "35px";  //consider making a separate class
     display.innerText = "Player is hiding";
     pLives++; //consider having a new function to break things up a bit more (separate display stuff into it's own fuctions)
@@ -56,50 +57,53 @@ function playerHides(event){
 
 //This is where the computer chooses it's hidding spots
 function computerHides(){
+    turn = "Computer"
     display.classList.add('fade');
-    display.innerText = "Computer is hiding";
-    computerBoard.sort((a,b) => 0.5 - Math.random());      
-
-    const compTimer = setInterval(() => {
-        let spacePos = computerBoard.pop();
-        computerHiding.push(spacePos);
+    display.innerText = "Computer's hiding";
+    compBoard.sort((a,b) => 0.5 - Math.random());      
+    const hideInterval = setInterval(() => {
+        let tile = compBoard.pop();
+        compHiding.push(tile);
         cLives++;
         cpuLives.innerText = cLives;
         if (cLives === 4){
-            clearInterval(compTimer);
+            clearInterval(hideInterval);
             playerTurnDisplay();
         }
     }, 1000);
-    console.log(computerHiding)
+    console.log(compHiding)
 }
-
 
 //this function is managing the players game play
 function playerTurnDisplay(){ 
     turn = "Player"
     display.classList.remove('fade');
     display.innerText = "Player's turn";
-    console.log(computerHiding);
+    console.log(compHiding);
 }
-function playerClick(event){ 
-    const tile = event.target
+function playerSearch(event){ 
+    console.log(event)
+    const tile = event.target;
+    console.log(tile)
     const tileNumber = parseInt(tile.dataset.index);
     if (turn !== "Player") return;  
-    if (computerHiding.indexOf(tileNumber) === -1){
+    if (compHiding.indexOf(tileNumber) === -1){
         tile.innerText=seeking;
         computerTurnDisplay()
-        computerSearch()
+        const computerTimeOut = setTimeout(computerSearch, 2500);
     }else{ 
-        cLives--;
+        cLives --;
         cpuLives.innerText = cLives;
         tile.classList.add('c-found')
         tile.innerText = "FOUND"
-        computerTurnDisplay()
-        computerSearch()
-        //still need conditional to check for win////////////////////
+        if (cLives === 0){
+            gameOverWin()
+        }else{
+            computerTurnDisplay()
+            const computerTimeOut = setTimeout(computerSearch, 2500);
+        }
     }
 }
-
 
 //These functions are managing the computer's game play
 function computerTurnDisplay(){
@@ -107,29 +111,53 @@ function computerTurnDisplay(){
     display.classList.add('fade');
     display.innerText = "Computer's turn";
 }
+
 function computerSearch(){
     if (turn !== "Computer") return;
-    const randomNumber = Math.floor(Math.random()*16);
-    computerGuesses.push(randomNumber);
-    const tile = playerTiles[randomNumber];
-    //still need a way to make sure the computer doesn't guess the same number twice///////////////////////
-    if (playerHiding.indexOf(randomNumber) === -1){
+    compOptions.sort((a,b) => 0.5 - Math.random());;
+    let guess = compOptions.pop();
+    console.log(guess)
+    compGuesses.push(guess);
+    const tile = playerTiles[guess];
+    console.log(compOptions)
+    console.log(compGuesses)
+
+    if (playerHiding.indexOf(guess) === -1){
         tile.innerText = seeking;
         tile.classList.add ('playerSeek');
-        //need conditional to check for win
         playerTurnDisplay()
-        playerClick()
+        playerSearch()
     }else{
         pLives --;
         playerLives.innerText = pLives;
         tile.classList.add('p-found')
         tile.innerText = "FOUND"
+        if (pLives === 0){
+         gameOverLose()
+    }else{
         playerTurnDisplay()
-        playerClick()
+        playerSearch()
     }
+  }
 }
 
-//DONT FORGET TO UPDATE THE README PAGE - CHECK PROJECT CRITERIA!!!
+function gameOverWin(){
+    winner.style.opacity = "1";
+   
+}
 
-// for the random number matches the players hidding Array, if it isn't 
-//creating an array with the numbers in it originally to pull from and move to the guesses
+function gameOverLose(){
+    display.innerText = "You Lose"
+    
+}
+
+function resetGame(){
+    pLives = 0;
+    cLives = 0;
+    playerBoard = [];
+    compBoard = Array.from (Array(16).keys());
+    playerHiding = [];
+    compHiding = [];  
+    compGuesses = [];
+    compOptions = Array.from (Array(16).keys());
+}
