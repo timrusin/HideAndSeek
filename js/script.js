@@ -1,12 +1,10 @@
 //MVP TO DOS!
 //- why error on 87?
-//- clear and reset baord for new game
 
 //Stretch Goals
 //- Splash Screen with instructions
 //- Custom fonts
 //- more animation with hits and score
-//- Sound effects for hidding, clicks, and hits
 //-custmom music - splash screen, game play, game over screens(2)
 
 //DONT FORGET TO UPDATE THE README PAGE - CHECK PROJECT CRITERIA!!!
@@ -20,7 +18,12 @@ const loser = document.querySelector(".loser");
 const restartBtn = document.querySelectorAll(".restart-button");
 restartBtn.forEach((button) => button.addEventListener("click", restart))
 
-// const restartBtnlose = document.getElementById("restart-button-lose").onclick = restart;
+//Audio
+const click1 = new Audio("audio/click1.mp3");
+const playerFind = new Audio("audio/playerFind.mp3");
+const winSound = new Audio("audio/Winner.mp3");
+const compFind = new Audio("audio/compFind.m4a");
+const loseSound = new Audio("audio/loser.mp3");
 
 let pLives = 0; 
 let cLives = 0;  
@@ -41,7 +44,7 @@ const display = document.getElementById("display-span");
 
 //This is where the player chooses thier hidding spots
 function playerHides(event){
-    turn = "Player"
+    turn = "Player";
     display.style.fontSize= "35px";  //consider making a separate class
     display.innerText = "Player is hiding";
     pLives++; //consider having a new function to break things up a bit more (separate display stuff into it's own fuctions)
@@ -57,15 +60,18 @@ function playerHides(event){
     }else if (tile.innerText !== ""){
         tile.removeEventListener("click", playerHides);  
     }   
+    click1.play();
 }
+
 
 //This is where the computer chooses it's hidding spots
 function computerHides(){
     turn = "Computer"
     display.classList.add('fade');
-    display.innerText = "Computer's hiding";
+    display.innerText = "Computer is hiding";
     compBoard.sort((a,b) => 0.5 - Math.random());      
     const hideInterval = setInterval(() => {
+        click1.play();
         let tile = compBoard.pop();
         compHiding.push(tile);
         cLives++;
@@ -88,6 +94,7 @@ function playerTurnDisplay(){
 function playerSearch(event){ 
     const tile = event.target;
     const tileNumber = parseInt(tile.dataset.index);
+    click1.play();
     if (turn !== "Player") return;  
     if (compHiding.indexOf(tileNumber) === -1){
         tile.innerText=seeking;
@@ -98,6 +105,7 @@ function playerSearch(event){
         cpuLives.innerText = cLives;
         tile.classList.add('c-found')
         tile.innerText = "FOUND"
+        playerFind.play();
         if (cLives === 0){
             gameOverWin()
         }else{
@@ -116,6 +124,7 @@ function computerTurnDisplay(){
 
 function computerSearch(){
     if (turn !== "Computer") return;
+    click1.play();
     compOptions.sort((a,b) => 0.5 - Math.random());;
     let guess = compOptions.pop();
     console.log(guess)
@@ -131,6 +140,7 @@ function computerSearch(){
         playerSearch()
     }else{
         pLives --;
+        compFind.play();
         playerLives.innerText = pLives;
         tile.classList.add('p-found')
         tile.innerText = "FOUND"
@@ -144,16 +154,19 @@ function computerSearch(){
 }
 
 function gameOverWin(){
+    winSound.play();
     winner.style.opacity = "1";
     winner.style.pointerEvents = "auto";
 }
 
 function gameOverLose(){
+    loseSound.play()
     loser.style.opacity = "1"; 
     loser.style.pointerEvents = "auto";
     
 }
 
 function restart(){
+    click1.play();
     window.location.reload();
 }
