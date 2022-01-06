@@ -19,6 +19,15 @@ h3{
     margin-bottom: 5px;
 }
 
+.restart-button{
+    color: green;
+    font-size: .75em;
+    background-color: black;
+}
+.restart-button:hover{
+    background-color: whitesmoke;
+}
+
 .board-container{
     display: grid;
     grid-template-columns: 50px 50px 50px 50px;

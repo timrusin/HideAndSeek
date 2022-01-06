@@ -6,7 +6,7 @@
 //- Splash Screen with instructions
 //- Custom fonts
 //- more animation with hits and score
-//-custmom music - splash screen, game play, game over screens(2)
+//-loop music and fade out at game over
 
 //DONT FORGET TO UPDATE THE README PAGE - CHECK PROJECT CRITERIA FOR PRESENTATION!!
 
@@ -25,6 +25,7 @@ const playerFind = new Audio("audio/playerFind.mp3");
 const winSound = new Audio("audio/Winner.mp3");
 const compFind = new Audio("audio/compFind.m4a");
 const loseSound = new Audio("audio/loser.mp3");
+const music = new Audio("audio/To Orlando 18.m4a");
 
 let pLives = 0; 
 let cLives = 0;  
@@ -46,6 +47,9 @@ const display = document.getElementById("display-span");
 //This is where the player chooses thier hidding spots
 function playerHides(event){
     turn = "Player";
+    music.play()
+    music.volume = .5;
+    music.loop;
     display.style.fontSize= "35px";  
     display.innerText = "Player is hiding";
     pLives++; 
@@ -90,6 +94,11 @@ function playerTurnDisplay(){
     display.classList.remove('fade');
     display.innerText = "Player's turn";
     console.log(compHiding);
+    const helperTimeout = setTimeout(helperMessage, 8000);
+    function helperMessage (){
+        display.classList.add('fade');
+        display.innerText= "click above";
+    }
 }
 function playerSearch(event){ 
     const tile = event.target;
