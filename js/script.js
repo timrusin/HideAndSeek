@@ -20,11 +20,14 @@ let helperTimeout
 
 //Audio
 const click1 = new Audio("audio/click1.mp3");
+const demonHideSound = new Audio("audio/demonHide.wav");
 const playerFind = new Audio("audio/playerFind.mp3");
-const winSound = new Audio("audio/Winner.mp3");
+const winSound = new Audio("audio/demonDie.mp3");
 const compFind = new Audio("audio/compFind.m4a");
-const loseSound = new Audio("audio/loser.mp3");
+const loseSound = new Audio("audio/demogorgon.mp3");
 const music = new Audio("audio/To Orlando 18.m4a");
+const winMusic = new Audio("audio/strangerThings.m4a");
+
 
 let pLives = 0; 
 let cLives = 0;  
@@ -61,7 +64,7 @@ function playerHides(event){
      console.log(playerHiding); 
     if (pLives === 4){
         playerTiles.forEach((tile)=>tile.removeEventListener("click", playerHides))  
-        computerHides()
+        computerHides();Í
     }else if (tile.innerText !== ""){
         tile.removeEventListener("click", playerHides);  
     }   
@@ -70,9 +73,10 @@ function playerHides(event){
 
 //This is where the computer chooses it's hidding spots
 function computerHides(){
-    turn = "Computer"
+    turn = "Computer";
+    demonHideSound.play();
     display.classList.add('fade');
-    display.innerText = "Computer is hiding";
+    display.innerText = "Demogorgon is hiding";
     compBoard.sort((a,b) => 0.5 - Math.random());      
     const hideInterval = setInterval(() => {
         click1.play();
@@ -85,7 +89,7 @@ function computerHides(){
             playerTurnDisplay();
         }
     }, 1000);
-    console.log(compHiding)
+    console.log(compHiding);
 }
 
 //this function is managing the players game play
@@ -94,7 +98,7 @@ function playerTurnDisplay(){
     display.classList.remove('fade');
     display.innerText = "Player's turn";
     console.log(compHiding);
-    helperTimeout = setTimeout(helperMessage, 6000);
+    helperTimeout = setTimeout(helperMessage, 4000);
     function helperMessage (){
         display.classList.add('fade');
         display.innerText= "click above";
@@ -109,7 +113,7 @@ function playerSearch(event){
     if (compHiding.indexOf(tileNumber) === -1){
         tile.innerText=seeking;
         tile.classList.add ('playerSeek');
-        computerTurnDisplay()
+        computerTurnDisplay();
         const computerTimeOut = setTimeout(computerSearch, 2000);
     }else{ 
         cLives --;
@@ -118,9 +122,9 @@ function playerSearch(event){
         tile.innerText = "FOUND";
         playerFind.play();
         if (cLives === 0){
-            gameOverWin()
+            gameOverWin();
         }else{
-            computerTurnDisplay()
+            computerTurnDisplay();
             const computerTimeOut = setTimeout(computerSearch, 2000);
         }
     }
@@ -131,34 +135,34 @@ function computerTurnDisplay(){
     clearTimeout(helperTimeout);
     turn = "Computer";
     display.classList.add('fade');
-    display.innerText = "Computer's turn";
+    display.innerText = "Demogorgon's turn";
 }
 
 function computerSearch(){
     if (turn !== "Computer") return;
     click1.play();
-    compOptions.sort((a,b) => 0.5 - Math.random());;
+    compOptions.sort((a,b) => 0.5 - Math.random());
     let guess = compOptions.pop();
-    console.log(guess)
+    console.log(guess);
     compGuesses.push(guess);
     const tile = playerTiles[guess];
-    console.log(compOptions)
-    console.log(compGuesses)
+    console.log(compOptions);
+    console.log(compGuesses);
 
     if (playerHiding.indexOf(guess) === -1){
         tile.innerText = seeking;
         tile.classList.add ('computerSeek');
-        playerTurnDisplay()
+        playerTurnDisplay();
     }else{
         pLives --;
         compFind.play();
         playerLives.innerText = pLives;
         tile.classList.add('p-found')
-        tile.innerText = "FOUND"
+        tile.innerText = "FOUND";
         if (pLives === 0){
-         gameOverLose()
+         gameOverLose();
     }else{
-        playerTurnDisplay()
+        playerTurnDisplay();
     }
   }
 }
@@ -166,13 +170,16 @@ function computerSearch(){
 function gameOverWin(){
     music.volume = 0;
     winSound.play();
+    winSound.volume= .25;
+    winMusic.play();
+    winMusic.volume= .75;
     winner.style.opacity = "1";
     winner.style.pointerEvents = "auto";
 }
 
 function gameOverLose(){
     music.volume = 0;
-    loseSound.play()
+    loseSound.play();
     loser.style.opacity = "1"; 
     loser.style.pointerEvents = "auto";
 }
