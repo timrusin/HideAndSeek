@@ -47,12 +47,13 @@ const display = document.getElementById("display-span");
 //This is where the player chooses thier hidding spots
 function playerHides(event){
     turn = "Player";
+    music.loop = true
     music.play()
     music.volume = .5;
     music.loop;
     display.style.fontSize= "35px";  
     display.innerText = "Player is hiding";
-    pLives++; 
+    pLives++;
     playerLives.innerText= pLives;
     const tile = event.target;
     const tileNumber = parseInt(tile.dataset.index);  
@@ -164,12 +165,14 @@ function computerSearch(){
 }
 
 function gameOverWin(){
+    music.volume = 0;
     winSound.play();
     winner.style.opacity = "1";
     winner.style.pointerEvents = "auto";
 }
 
 function gameOverLose(){
+    music.volume = 0;
     loseSound.play()
     loser.style.opacity = "1"; 
     loser.style.pointerEvents = "auto";
