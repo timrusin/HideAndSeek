@@ -4,15 +4,17 @@
 //- more animation with hits and score
 //DONT FORGET TO UPDATE THE README PAGE - CHECK PROJECT CRITERIA FOR PRESENTATION!!
 
+//boad elements
 const playerTiles = document.querySelectorAll(".player-tile");
 const compTiles = document.querySelectorAll(".comp-tile");
 playerTiles.forEach((tile) => tile.addEventListener("click", playerHides));
 compTiles.forEach((tile) => tile.addEventListener("click", playerSearch));
+
+//game over elements
 const winner = document.querySelector(".winner");
 const loser = document.querySelector(".loser");
 const restartBtn = document.querySelectorAll(".restart-button");
 restartBtn.forEach((button) => button.addEventListener("click", restart))
-let helperTimeout
 
 //Audio
 const click1 = new Audio("audio/click1.mp3");
@@ -36,6 +38,7 @@ let compGuesses = [];
 let playerBoard = [];
 let compBoard = Array.from(Array(16).keys());
 let turn
+let helperTimeout
 
 //Taly board elements
 const playerLives = document.getElementById("player-lives");
