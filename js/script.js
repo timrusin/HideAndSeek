@@ -89,14 +89,14 @@ function computerHidingDisplay(){
 
 function computerHidingClick(){
     compBoard.sort((a,b) => 0.5 - Math.random());      
-    const hideInterval = setInterval(() => {
+    const compHidingInterval = setInterval(() => {
         click1.play();
         let hidingSpot = compBoard.pop();
         compHiding.push(hidingSpot);
         cLives++;
         cpuLives.innerText = cLives;
         if (cLives === 4){
-            clearInterval(hideInterval);
+            clearInterval(compHidingInterval);
             playerTurnDisplay();
         }
     }, 1000);
