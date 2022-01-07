@@ -64,7 +64,7 @@ function playerHides(event){
      console.log(playerHiding); 
     if (pLives === 4){
         playerTiles.forEach((tile)=>tile.removeEventListener("click", playerHides))  
-        computerHides();Í
+        computerHides();
     }else if (tile.innerText !== ""){
         tile.removeEventListener("click", playerHides);  
     }   
