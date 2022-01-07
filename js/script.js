@@ -1,11 +1,7 @@
 //TODOs
 //- remove functions from functions
-//- fix up the styling on the gameover screens
 //- Splash Screen with instructions
-//- Custom fonts
 //- more animation with hits and score
-//- loop music and fade out at game over
-
 //DONT FORGET TO UPDATE THE README PAGE - CHECK PROJECT CRITERIA FOR PRESENTATION!!
 
 const playerTiles = document.querySelectorAll(".player-tile");
@@ -28,7 +24,7 @@ const loseSound = new Audio("audio/demogorgon.mp3");
 const music = new Audio("audio/To Orlando 18.m4a");
 const winMusic = new Audio("audio/strangerThings.m4a");
 
-
+//variables
 let pLives = 0; 
 let cLives = 0;  
 const hiding = "HIDE";  
@@ -61,7 +57,6 @@ function playerHides(event){
     const tileNumber = parseInt(tile.dataset.index);  
     tile.innerText= hiding;                 
     playerHiding.push(tileNumber) 
-     console.log(playerHiding); 
     if (pLives === 4){
         playerTiles.forEach((tile)=>tile.removeEventListener("click", playerHides))  
         computerHides();
@@ -146,9 +141,6 @@ function computerSearch(){
     console.log(guess);
     compGuesses.push(guess);
     const tile = playerTiles[guess];
-    console.log(compOptions);
-    console.log(compGuesses);
-
     if (playerHiding.indexOf(guess) === -1){
         tile.innerText = seeking;
         tile.classList.add ('computerSeek');
