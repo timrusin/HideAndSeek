@@ -1,12 +1,10 @@
-//MVP TO DOS!
-//- why error on 87?
-
 //TODOs
+//- remove functions from functions
 //- fix up the styling on the gameover screens
 //- Splash Screen with instructions
 //- Custom fonts
 //- more animation with hits and score
-//-loop music and fade out at game over
+//- loop music and fade out at game over
 
 //DONT FORGET TO UPDATE THE README PAGE - CHECK PROJECT CRITERIA FOR PRESENTATION!!
 
@@ -18,6 +16,7 @@ const winner = document.querySelector(".winner");
 const loser = document.querySelector(".loser");
 const restartBtn = document.querySelectorAll(".restart-button");
 restartBtn.forEach((button) => button.addEventListener("click", restart))
+let helperTimeout
 
 //Audio
 const click1 = new Audio("audio/click1.mp3");
@@ -37,9 +36,9 @@ let compOptions = Array.from (Array(16).keys());
 let compGuesses = [];  
 let playerBoard = [];
 let compBoard = Array.from (Array(16).keys());
-let turn = ""
+let turn
 
-//Taly boaard elements
+//Taly board elements
 const playerLives = document.getElementById("player-lives");
 const cpuLives = document.getElementById("cpu-lives");
 const display = document.getElementById("display-span"); 
@@ -91,21 +90,22 @@ function computerHides(){
 
 //this function is managing the players game play
 function playerTurnDisplay(){ 
-    turn = "Player"
+    turn = "Player";
     display.classList.remove('fade');
     display.innerText = "Player's turn";
     console.log(compHiding);
-    const helperTimeout = setTimeout(helperMessage, 8000);
+    helperTimeout = setTimeout(helperMessage, 6000);
     function helperMessage (){
         display.classList.add('fade');
         display.innerText= "click above";
     }
 }
+
 function playerSearch(event){ 
+    if (turn !== "Player") return;  
     const tile = event.target;
     const tileNumber = parseInt(tile.dataset.index);
     click1.play();
-    if (turn !== "Player") return;  
     if (compHiding.indexOf(tileNumber) === -1){
         tile.innerText=seeking;
         tile.classList.add ('playerSeek');
@@ -114,8 +114,8 @@ function playerSearch(event){
     }else{ 
         cLives --;
         cpuLives.innerText = cLives;
-        tile.classList.add('c-found')
-        tile.innerText = "FOUND"
+        tile.classList.add('c-found');
+        tile.innerText = "FOUND";
         playerFind.play();
         if (cLives === 0){
             gameOverWin()
@@ -128,6 +128,7 @@ function playerSearch(event){
 
 //These functions are managing the computer's game play
 function computerTurnDisplay(){
+    clearTimeout(helperTimeout);
     turn = "Computer";
     display.classList.add('fade');
     display.innerText = "Computer's turn";
@@ -148,7 +149,6 @@ function computerSearch(){
         tile.innerText = seeking;
         tile.classList.add ('computerSeek');
         playerTurnDisplay()
-        playerSearch()
     }else{
         pLives --;
         compFind.play();
@@ -159,7 +159,6 @@ function computerSearch(){
          gameOverLose()
     }else{
         playerTurnDisplay()
-        playerSearch()
     }
   }
 }
@@ -176,7 +175,6 @@ function gameOverLose(){
     loseSound.play()
     loser.style.opacity = "1"; 
     loser.style.pointerEvents = "auto";
-    
 }
 
 function restart(){
