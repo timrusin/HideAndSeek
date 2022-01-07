@@ -134,7 +134,8 @@ function playerTurnSearch(event){
         hidingSpot.classList.add('c-found');
         hidingSpot.innerText = "FOUND";
         playerFind.play();
-        //prevent double Guess
+        
+        //to prevent double Guess
         if (hidingSpot.innerText !== ""){
             hidingSpot.removeEventListener("click", playerTurnSearch)};
         checkForWin();
@@ -211,7 +212,7 @@ function gameOverLose(){
 }
 
 
-//This function is restartig the game when the restart-button is clicked
+//This function is restarting the game when the "restart-button" is clicked
 function restart(){
     click1.play();
     window.location.reload();

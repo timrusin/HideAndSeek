@@ -1,6 +1,9 @@
 
---Summary--
-I am planning to build a single player/AI game that I am calling "Hide and Seek."
+### Hide and Seek
+By: Tim Rusin
+
+## Summary:
+I decided to buila a single player/AI game that I am calling "Hide and Seek."
 The game is a much simpler spin-off of the Milton Bradely classic, Battleship.
 The player will choose and select four(4) squares within their 16 square playing board to "hide in".
 The computer will then do the same on their own board and then the game will begin!
