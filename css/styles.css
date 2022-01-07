@@ -17,8 +17,11 @@ h1{
     color:rgb(255, 255, 255);
     margin-bottom: 0;
 }
+
 h1#title{
     color: black;
+    -webkit-text-stroke: .5px;
+    -webkit-text-stroke-color: rgb(145, 0, 0);
     border-top: 2px rgb(143, 0, 0) solid;
     border-bottom: 2px rgb(143, 0, 0) solid;
     text-shadow: 0px 0px 25px rgb(255, 92, 92);
@@ -181,12 +184,4 @@ h3{
 }
 .restart-button:hover{
     background-color: whitesmoke;
-}
-
-.hide{
- display: none;
-}
-
-.show{
- display: block;
 }

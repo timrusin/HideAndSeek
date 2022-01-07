@@ -1,8 +1,3 @@
-//TODOs
-//- Splash Screen with instructions
-//- more animation with hits and score
-//DONT FORGET TO UPDATE THE README PAGE - CHECK PROJECT CRITERIA FOR PRESENTATION!!
-
 //Audio elements
 const click1 = new Audio("audio/click1.mp3");
 const demonHideSound = new Audio("audio/demonHide.wav");
@@ -12,7 +7,8 @@ const compFind = new Audio("audio/compFind.m4a");
 const loseSound = new Audio("audio/demogorgon.mp3");
 const music = new Audio("audio/To Orlando 18.m4a");
 const winMusic = new Audio("audio/strangerThings.m4a");
-const loseMusic = new Audio("audio/loseMusic.wav")
+const loseMusic = new Audio("audio/loseMusic.wav");
+
 
 //board elements
 const playerTiles = document.querySelectorAll(".player-tile");
@@ -20,24 +16,28 @@ const compTiles = document.querySelectorAll(".comp-tile");
 playerTiles.forEach((tile) => tile.addEventListener("click", playerHidingClick));
 compTiles.forEach((tile) => tile.addEventListener("click", playerTurnSearch));
 
+
 //Taly board elements
 const playerLives = document.getElementById("player-lives");
 const cpuLives = document.getElementById("cpu-lives");
 const display = document.getElementById("display-span"); 
 
+
 //game over elements
 const winner = document.querySelector(".winner");
 const loser = document.querySelector(".loser");
 const restartBtn = document.querySelectorAll(".restart-button");
-restartBtn.forEach((button) => button.addEventListener("click", restart))
+restartBtn.forEach((button) => button.addEventListener("click", restart));
+
 
 //global variables
 let pLives = 0; 
 let cLives = 0;  
 const hiding = "HIDE";  
 const seeking = "SEEK"; 
-let turn
-let helperTimeout
+let turn;
+let helperTimeout;
+
 
 //board and guess arrays 
 let compHiding = []; 
@@ -47,15 +47,17 @@ let compGuesses = [];
 let playerBoard = [];
 let compBoard = Array.from(Array(16).keys());
 
+
 //functions
 //These two functions are where the player chooses their hidding spots
 function playerHidingClick(event){
     const tile = event.target; 
     click1.play();
+    click1.preload="auto";
     const tileNumber = parseInt(tile.dataset.index);
     tile.innerText= hiding;                 
-    playerHiding.push(tileNumber) 
-    playerHidingDisplay()              
+    playerHiding.push(tileNumber);
+    playerHidingDisplay();              
     music.loop = true;
     music.play();
     music.volume = .5;
@@ -74,6 +76,7 @@ function playerHidingDisplay(){
     pLives++;
     playerLives.innerText= pLives;
 }
+
 
 //These two functions are where the computer chooses it's hidding spots
 function computerHidingDisplay(){
@@ -99,6 +102,7 @@ function computerHidingClick(){
     }, 1000);
     console.log(compHiding);
 }
+
 
 //these four functions are managing the players game play
 function playerTurnDisplay(){ 
@@ -146,6 +150,7 @@ function checkForWin(){
     }
 }
 
+
 //These three functions are managing the computer's game play
 function computerTurnDisplay(){
     clearTimeout(helperTimeout);
@@ -184,6 +189,7 @@ function checkForLoss(){
     }
   }
 
+
 //These functions are determining the game over result
 function gameOverWin(){
     music.pause();
@@ -203,6 +209,7 @@ function gameOverLose(){
     loser.style.opacity = "1"; 
     loser.style.pointerEvents = "auto";
 }
+
 
 //This function is restartig the game when the restart-button is clicked
 function restart(){
