@@ -40,6 +40,8 @@ h3{
 }
 
 .tile{
+    background-image: url(../images/tileBG.jpeg);
+    background-size: cover;
     background-color: black;
     border: 1px white solid;
     border-radius: 50%;

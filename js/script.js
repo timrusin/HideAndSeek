@@ -31,10 +31,10 @@ const hiding = "HIDE";
 const seeking = "SEEK";  
 let compHiding = [];  
 let playerHiding = [];  
-let compOptions = Array.from (Array(16).keys());
+let compOptions = Array.from(Array(16).keys());
 let compGuesses = [];  
 let playerBoard = [];
-let compBoard = Array.from (Array(16).keys());
+let compBoard = Array.from(Array(16).keys());
 let turn
 
 //Taly board elements
