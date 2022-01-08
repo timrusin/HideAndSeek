@@ -167,22 +167,22 @@ function computerTurnDisplay(){
 
 function computerTurnSearch(){
     if (turn !== "Computer") return;
-    click1.play();
     compHidingOptions.sort((a,b) => 0.5 - Math.random());
     let guess = compHidingOptions.pop();
     console.log(guess); //remove this for production!!
     compGuesses.push(guess);
     const spot = playerTiles[guess];
+    click1.play();
     if (playerHiding.indexOf(guess) === -1){
         spot.innerText = seeking;
         spot.classList.add ('computerSeek');
         playerTurnDisplay();
     }else{
         pLives --;
-        compFind.play();
         playerLives.innerText = pLives;
         spot.classList.add('p-found')
         spot.innerText = "FOUND";
+        compFind.play();
         checkForLoss()
     }
 }
