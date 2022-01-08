@@ -15,6 +15,7 @@ const playerTiles = document.querySelectorAll(".player-tile");
 const compTiles = document.querySelectorAll(".comp-tile");
 playerTiles.forEach((tile) => tile.addEventListener("click", playerHidingClick));
 compTiles.forEach((tile) => tile.addEventListener("click", playerTurnSearch));
+const demonBoard = document.getElementById("computer-board");
 
 
 //Taly board elements
@@ -81,7 +82,9 @@ function playerHidingDisplay(){
 //These two functions are where the computer chooses it's hidding spots
 function computerHidingDisplay(){
     turn = "Computer";
+    display.style.fontSize= "32px";  
     demonHideSound.play();
+    demonBoard.classList.add('fade');
     display.classList.add('fade');
     display.innerText = "Demogorgon is hiding";
     computerHidingClick();
@@ -100,12 +103,14 @@ function computerHidingClick(){
             playerTurnDisplay();
         }
     }, 1000);
+    
     console.log(compHiding);
 }
 
 
 //these four functions are managing the players game play
 function playerTurnDisplay(){ 
+    demonBoard.classList.remove('fade');
     turn = "Player";
     display.classList.remove('fade');
     display.innerText = "Player's turn";
