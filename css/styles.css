@@ -23,6 +23,9 @@ h1{
     margin-bottom: 0;
 }
 
+h2{
+    font-size: 1em;
+}
 h1#title{
     color: black;
     -webkit-text-stroke: .5px;
@@ -74,12 +77,12 @@ h3{
     background: rgba(255,255,255,.25);
     color: black;
     box-shadow: 0px 0px 10px white;
-    font-size: 16px;
+    font-size: 1em;
     margin-top: 0;
     margin-bottom: 0px;
-    padding: 4px;
+    padding: 6px;
     width: 320px;
-    height: 60px;
+    height: 50px;
     display: flex;
     justify-content: center;
     text-justify: center;
