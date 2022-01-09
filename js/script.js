@@ -104,7 +104,6 @@ function computerHidingClick(){
 //these four functions are managing the players game play
 function playerTurnDisplay(){ 
     demonOpacityReset();
-    playerOpacityDrop();
     turn = "Player";
     demonBoard.classList.remove('fade');
     display.classList.remove('fade');
@@ -145,8 +144,6 @@ function checkForWin(){
     if (cLives === 0){
         gameOverWin();
     }else{
-        playerOpacityDrop();
-        demonOpacityReset();
         computerTurnDisplay();
         const computerTimeOut = setTimeout(computerTurnSearch, 2000);
     }

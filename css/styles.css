@@ -26,6 +26,7 @@ h1{
 h2{
     font-size: 1em;
 }
+
 h1#title{
     color: black;
     -webkit-text-stroke: .5px;
@@ -79,16 +80,15 @@ h3{
     box-shadow: 0px 0px 10px white;
     font-size: 1em;
     margin-top: 0;
-    margin-bottom: 0px;
-    padding: 6px;
+    margin-bottom: 0;
     width: 320px;
-    height: 50px;
+    height: 60px;
     display: flex;
     justify-content: center;
     text-justify: center;
     align-items: center;
     text-align: center;
-    border: 2px solid rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
 }
 
 .taly-box{
@@ -137,11 +137,13 @@ h3{
     font-size: .75em;
     color: black;
 }
+
 .p-found{
     background-color: red;
     font-size: .75em;
     color: black;
 }
+
 .computerSeek{
     color: rgb(235, 34, 34);
 }
