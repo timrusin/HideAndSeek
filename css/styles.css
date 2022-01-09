@@ -74,12 +74,12 @@ h3{
     background: rgba(255,255,255,.25);
     color: black;
     box-shadow: 0px 0px 10px white;
-    font-size: 15px;
+    font-size: 16px;
     margin-top: 0;
     margin-bottom: 0px;
     padding: 4px;
-    width: 300px;
-    height: 55px;
+    width: 320px;
+    height: 60px;
     display: flex;
     justify-content: center;
     text-justify: center;
