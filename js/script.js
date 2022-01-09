@@ -114,6 +114,8 @@ function computerHidingClick(){
 
 //these four functions are managing the players game play
 function playerTurnDisplay(){ 
+    demonOpacityReset();
+    playerOpacityDrop();
     turn = "Player";
     demonBoard.classList.remove('fade');
     display.classList.remove('fade');
@@ -166,11 +168,11 @@ function checkForWin(){
 
 //These three functions are managing the computer's game play
 function computerTurnDisplay(){
+    demonOpacityDrop();
+    playerOpacityReset();
     clearTimeout(helperTimeout);
     turn = "Computer";
     display.classList.add('fade');
-    playerOpacityDrop();
-    demonOpacityReset();
     display.innerText = "Demogorgon's turn";
 }
 
@@ -219,7 +221,7 @@ function gameOverWin(){
 
 function gameOverLose(){
     music.pause();
-    compFind.pause();
+    compFind.pause
     loseSound.play();
     loseMusic.loop = true;
     loseMusic.play();
