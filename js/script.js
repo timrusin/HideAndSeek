@@ -79,7 +79,7 @@ function computerHidingDisplay(){
     playerOpacityDrop();
     display.style.fontSize= "30px";  
     demonHideSound.play();
-    demonBoard.classList.add('fade')Í
+    demonBoard.classList.add('fade');
     display.classList.add('fade');
     display.innerText = "Demogorgon is hiding";
     computerHidingClick();
