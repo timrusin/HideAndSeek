@@ -9,7 +9,6 @@ const music = new Audio("audio/To Orlando 18.m4a");
 const winMusic = new Audio("audio/strangerThings.m4a");
 const loseMusic = new Audio("audio/loseMusic.wav");
 
-
 //board elements
 const playerTiles = document.querySelectorAll(".player-tile");
 const compTiles = document.querySelectorAll(".comp-tile");
@@ -18,20 +17,16 @@ compTiles.forEach((tile) => tile.addEventListener("click", playerTurnSearch));
 const demonBoard = document.getElementById("computer-board");
 const plyrBoard = document.getElementById("player-board");
 
-
-
 //Taly board elements
 const playerLives = document.getElementById("player-lives");
 const cpuLives = document.getElementById("cpu-lives");
 const display = document.getElementById("display-span"); 
-
 
 //game over elements
 const winner = document.querySelector(".winner");
 const loser = document.querySelector(".loser");
 const restartBtn = document.querySelectorAll(".restart-button");
 restartBtn.forEach((button) => button.addEventListener("click", restart));
-
 
 //global variables
 let pLives = 0; 
@@ -41,7 +36,6 @@ const seeking = "SEEK";
 let turn;
 let helperTimeout;
 
-
 //board and guess arrays 
 let compHiding = []; 
 let playerHiding = [];  
@@ -49,7 +43,6 @@ let compHidingOptions = Array.from(Array(16).keys());
 let compGuesses = [];   
 let playerBoard = [];
 let compBoard = Array.from(Array(16).keys());
-
 
 //functions
 //These two functions are where the player chooses their hidding spots
@@ -71,7 +64,6 @@ function playerHidingClick(event){
             tile.removeEventListener("click", playerHidingClick);  
         }   
 }
-
 function playerHidingDisplay(){
     turn = "Player";
     display.style.fontSize= "35px";  
@@ -80,7 +72,6 @@ function playerHidingDisplay(){
     playerLives.innerText= pLives;
 }
 
-
 //These two functions are where the computer chooses it's hidding spots
 function computerHidingDisplay(){
     turn = "Computer";
@@ -88,12 +79,11 @@ function computerHidingDisplay(){
     playerOpacityDrop();
     display.style.fontSize= "30px";  
     demonHideSound.play();
-    demonBoard.classList.add('fade')
+    demonBoard.classList.add('fade')Í
     display.classList.add('fade');
     display.innerText = "Demogorgon is hiding";
     computerHidingClick();
 }
-
 function computerHidingClick(){
     compBoard.sort((a,b) => 0.5 - Math.random());      
     const compHidingInterval = setInterval(() => {
@@ -111,7 +101,6 @@ function computerHidingClick(){
     console.log(compHiding);
 }
 
-
 //these four functions are managing the players game play
 function playerTurnDisplay(){ 
     demonOpacityReset();
@@ -124,12 +113,10 @@ function playerTurnDisplay(){
     console.log(compHiding);
     helperTimeout = setTimeout(helperMessage, 4000);
 }
-
 function helperMessage (){
     display.classList.add('fade');
     display.innerText= "click above";
 }
-
 function playerTurnSearch(event){ 
     if (turn !== "Player") return;  
     const hidingSpot = event.target;
@@ -165,7 +152,6 @@ function checkForWin(){
     }
 }
 
-
 //These three functions are managing the computer's game play
 function computerTurnDisplay(){
     demonOpacityDrop();
@@ -175,7 +161,6 @@ function computerTurnDisplay(){
     display.classList.add('fade');
     display.innerText = "Demogorgon's turn";
 }
-
 function computerTurnSearch(){
     if (turn !== "Computer") return;
     compHidingOptions.sort((a,b) => 0.5 - Math.random());
@@ -198,7 +183,6 @@ function computerTurnSearch(){
         checkForLoss()
     }
 }
-
 function checkForLoss(){
     if (pLives === 0){
         gameOverLose();    
@@ -206,7 +190,6 @@ function checkForLoss(){
         playerTurnDisplay();
     }
   }
-
 
 //These functions are determining the game over result
 function gameOverWin(){
@@ -218,7 +201,6 @@ function gameOverWin(){
     winner.style.opacity = "1";
     winner.style.pointerEvents = "auto";
 }
-
 function gameOverLose(){
     music.pause();
     compFind.pause
@@ -228,7 +210,6 @@ function gameOverLose(){
     loser.style.opacity = "1"; 
     loser.style.pointerEvents = "auto";
 }
-
 
 //This function is restarting the game when the "restart-button" is clicked
 function restart(){
