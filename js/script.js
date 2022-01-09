@@ -16,6 +16,8 @@ const compTiles = document.querySelectorAll(".comp-tile");
 playerTiles.forEach((tile) => tile.addEventListener("click", playerHidingClick));
 compTiles.forEach((tile) => tile.addEventListener("click", playerTurnSearch));
 const demonBoard = document.getElementById("computer-board");
+const plyrBoard = document.getElementById("player-board");
+
 
 
 //Taly board elements
@@ -82,6 +84,8 @@ function playerHidingDisplay(){
 //These two functions are where the computer chooses it's hidding spots
 function computerHidingDisplay(){
     turn = "Computer";
+    demonOpacityReset();
+    playerOpacityDrop();
     display.style.fontSize= "32px";  
     demonHideSound.play();
     demonBoard.classList.add('fade');
@@ -110,9 +114,10 @@ function computerHidingClick(){
 
 //these four functions are managing the players game play
 function playerTurnDisplay(){ 
-    demonBoard.classList.remove('fade');
     turn = "Player";
+    demonBoard.classList.remove('fade');
     display.classList.remove('fade');
+    plyrBoard.classList.add('opacity-drop');
     display.innerText = "Player's turn";
     console.log(compHiding);
     helperTimeout = setTimeout(helperMessage, 4000);
@@ -138,6 +143,7 @@ function playerTurnSearch(event){
         cpuLives.innerText = cLives;
         hidingSpot.classList.add('c-found');
         hidingSpot.innerText = "FOUND";
+        click1.pause();
         playerFind.play();
         
         //to prevent double Guess
@@ -146,11 +152,12 @@ function playerTurnSearch(event){
         checkForWin();
     }
 }
-
 function checkForWin(){
     if (cLives === 0){
         gameOverWin();
     }else{
+        playerOpacityDrop();
+        demonOpacityReset();
         computerTurnDisplay();
         const computerTimeOut = setTimeout(computerTurnSearch, 2000);
     }
@@ -162,6 +169,8 @@ function computerTurnDisplay(){
     clearTimeout(helperTimeout);
     turn = "Computer";
     display.classList.add('fade');
+    playerOpacityDrop();
+    demonOpacityReset();
     display.innerText = "Demogorgon's turn";
 }
 
@@ -182,6 +191,7 @@ function computerTurnSearch(){
         playerLives.innerText = pLives;
         spot.classList.add('p-found')
         spot.innerText = "FOUND";
+        click1.pause();
         compFind.play();
         checkForLoss()
     }
@@ -209,6 +219,7 @@ function gameOverWin(){
 
 function gameOverLose(){
     music.pause();
+    compFind.pause();
     loseSound.play();
     loseMusic.loop = true;
     loseMusic.play();
@@ -221,4 +232,18 @@ function gameOverLose(){
 function restart(){
     click1.play();
     window.location.reload();
+}
+
+//opacity functions for gmae boards
+function demonOpacityDrop(){
+    demonBoard.classList.add('opacity-drop')
+}
+function demonOpacityReset(){
+    demonBoard.classList.remove('opacity-drop')
+}
+function playerOpacityDrop(){
+    plyrBoard.classList.add('opacity-drop')
+}
+function playerOpacityReset(){
+    plyrBoard.classList.remove('opacity-drop')
 }
