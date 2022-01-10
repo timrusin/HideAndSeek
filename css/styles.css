@@ -133,7 +133,7 @@ h3{
 }
 
 .c-found{ 
-    background-color: rgb(114, 238, 114); /*lets come back to this to make it flash in, bootstrap?*/
+    background-color: rgb(114, 238, 114);
     font-size: .75em;
     color: black;
 }
@@ -152,7 +152,7 @@ h3{
     color: rgb(114, 238, 114);
 }
 
-.winner {
+.winner{
     background-image: url(../images/eleven.gif);
     background-size: 600px 700px;
     background-position: center center;

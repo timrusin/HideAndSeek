@@ -97,8 +97,6 @@ function computerHidingClick(){
             playerTurnDisplay();
         }
     }, 1000);
-    
-    console.log(compHiding);
 }
 
 //these four functions are managing the players game play
@@ -109,7 +107,6 @@ function playerTurnDisplay(){
     display.classList.remove('fade');
     plyrBoard.classList.add('opacity-drop');
     display.innerText = "Player's turn";
-    console.log(compHiding);
     helperTimeout = setTimeout(helperMessage, 4000);
 }
 function helperMessage (){
