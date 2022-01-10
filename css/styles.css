@@ -78,7 +78,7 @@ h3{
     background: rgba(255,255,255,.25);
     color: black;
     box-shadow: 0px 0px 10px white;
-    font-size: 15px;
+    font-size: 16px;
     margin-top: 0;
     margin-bottom: 0;
     width: 320px;
@@ -186,7 +186,7 @@ h3{
 
 .opacity-drop{
     opacity: .55;
-}
+} 
 
 .restart-button{
     color: rgb(179, 3, 3);
@@ -201,7 +201,6 @@ h3{
 }
 
 .game-over{
-    text-shadow: 20px 0px 40px rgb(161, 14, 14) ;
-    
-    
+    text-shadow: 20px 0px 40px rgb(161, 14, 14);
+    margin-top: 250px;
 }

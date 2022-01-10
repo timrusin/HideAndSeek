@@ -131,7 +131,6 @@ function playerTurnSearch(event){
         cpuLives.innerText = cLives;
         hidingSpot.classList.add('c-found');
         hidingSpot.innerText = "FOUND";
-        click1.pause();
         playerFind.play();
         
         //to prevent double Guess
@@ -175,7 +174,6 @@ function computerTurnSearch(){
         playerLives.innerText = pLives;
         spot.classList.add('p-found')
         spot.innerText = "FOUND";
-        click1.pause();
         compFind.play();
         checkForLoss()
     }
@@ -200,7 +198,6 @@ function gameOverWin(){
 }
 function gameOverLose(){
     music.pause();
-    compFind.pause
     loseSound.play();
     loseMusic.loop = true;
     loseMusic.play();
