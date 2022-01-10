@@ -14,9 +14,11 @@ Hide and Seek is a single player versus AI type game that was inspired by the Mi
 ### Stanger Things Inspiration:
 ![stanger things design inspiration](https://github.com/timrusin/HideAndSeek/blob/main/images/stranger_insiration.jpg)
 
-Once I added the gameplay music, I felt the game tkaing a bit of a "spooky" turn. This led me to the forest background image and the Red font. I realized imediately that this was beginning to have a Stranger Things vibe to it. So I ran with it.
+Once I added the gameplay music, I felt the game taking a bit of a "spooky" turn. This led me to the forest background image and the Red font. I realized imediately that this was beginning to have a Stranger Things vibe to it. So I ran with it.
 
-![finsihed start screen](https://github.com/timrusin/HideAndSeek/blob/main/images/finished_start.jpg)
+![finsihed start screen](https://github.com/timrusin/HideAndSeek/blob/main/images/finished_start.jpg) ![finished gameplay](https://github.com/timrusin/HideAndSeek/blob/main/images/finishsed_gameplay.jpg)
 
-![finished gameplay](https://github.com/timrusin/HideAndSeek/blob/main/images/finishsed_gameplay.jpg)
+![win screen](https://github.com/timrusin/HideAndSeek/blob/main/images/win_screen.jpg) ![lose screen](https://github.com/timrusin/HideAndSeek/blob/main/images/lose_screen.jpg)
+
+I added a separate win and loose splash screen to come up accordingly incoporating music from the show and some creepy Demogorgon like sound effects throughout. 
 
