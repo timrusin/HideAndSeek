@@ -1,16 +1,12 @@
-
-### Hide and Seek
-By: Tim Rusin
+# Hide and Seek
+#### Designed by: Tim Rusin
 
 ## Summary:
-I decided to buila a single player/AI game that I am calling "Hide and Seek."
-The game is a much simpler spin-off of the Milton Bradely classic, Battleship.
-The player will choose and select four(4) squares within their 16 square playing board to "hide in".
-The computer will then do the same on their own board and then the game will begin!
 
-The player will click on any of the computer's board cells in order to try to find where they are 
-hiding. If they find one, it will be revealed.  The computer will then do the same on the player's board.
-This back and forth game play will continue until either the player or computer has found all of their opponent's pieces. 
+
+Hide and Seek is a single player versus AI type game that was inspired by the Milton Bradley classic board game Battle Ship. I loved this game as a kid and quickly realized it would make a great browser based game.  I also quickly realized how challenging this game would be with all of the  differnt variables to take into consideration.  That being said, I decided to start with a much simpler version of the game by using single player postions on a 4x4 grid.
+
+![Wire Frame image of Game](https://github.com/timrusin/HideAndSeek/blob/main/images/HideandSeekMock.png)
 
 --User Stories and MVPs--
 - Player needs to know how to play and how to start the game (MVP(gold):instructions in place on main screen)
