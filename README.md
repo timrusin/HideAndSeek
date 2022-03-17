@@ -54,7 +54,7 @@ Getting started is pretty straight forward, the opening display box will tell yo
         - "Found" alert sound on your board when you are caught
         - Lose screen Demogorgon "scream" and Music
 - I would still like to build an opening splash screen to start the game with as opposed to having it load directly to the game.  I would add the instructions to this opening screen instead of the display box in the game. 
-- It would be fun to add some more levels of play that could include some slightly different game plan to keep the user engaged. It's great that the game is operational, but it gets boring pretty quickly. 
+- It would be fun to add some more levels of play that could include some slightly different game play to keep the user engaged. It's great that the game is operational, but it gets boring pretty quickly. 
 - I purposely built this game from a "mobile first" perspective and would like to use some media query to build a scalable version of the game to larger screens. 
 
 
