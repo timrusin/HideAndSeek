@@ -40,6 +40,7 @@ let helperTimeout;
 let compHiding = []; 
 let playerHiding = [];  
 let compHidingOptions = Array.from(Array(16).keys());
+
 let compGuesses = [];   
 let playerBoard = [];
 let compBoard = Array.from(Array(16).keys());
