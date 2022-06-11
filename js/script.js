@@ -50,7 +50,6 @@ let compBoard = Array.from(Array(16).keys());
 function playerHidingClick(event){
     const tile = event.target; 
     click1.play();
-    click1.preload="auto";
     const tileNumber = parseInt(tile.dataset.index);
     tile.innerText= hiding;                 
     playerHiding.push(tileNumber);
@@ -67,7 +66,7 @@ function playerHidingClick(event){
 }
 function playerHidingDisplay(){
     turn = "Player";
-    display.style.fontSize= "35px";  
+    display.style.fontSize= "6vw";  
     display.innerText = "Player is hiding";
     pLives++;
     playerLives.innerText= pLives;
@@ -78,7 +77,7 @@ function computerHidingDisplay(){
     turn = "Computer";
     demonOpacityReset();
     playerOpacityDrop();
-    display.style.fontSize= "30px";  
+    display.style.fontSize= "6vw";  
     demonHideSound.play();
     demonBoard.classList.add('fade');
     display.classList.add('fade');
