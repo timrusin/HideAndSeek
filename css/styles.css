@@ -116,7 +116,7 @@ h3{
 }
 
 .fade{
-    font-size: 2vh;
+    font-size: 1em;
     animation-name: fade;
     animation-fill-mode: both;
     animation-iteration-count: infinite;
