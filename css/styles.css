@@ -134,13 +134,13 @@ h3{
 
 .c-found{ 
     background-color: rgb(114, 238, 114);
-    font-size: 2vh;
+    font-size: 1.75vh;
     color: black;
 }
 
 .p-found{
     background-color: red;
-    font-size: 2vh;
+    font-size: 1.75vh;
     color: black;
 }
 
