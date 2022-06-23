@@ -66,7 +66,7 @@ function playerHidingClick(event){
 }
 function playerHidingDisplay(){
     turn = "Player";
-    display.style.fontSize= "6vh";  
+    display.style.fontSize= "2em";  
     display.innerText = "Player is hiding";
     pLives++;
     playerLives.innerText= pLives;
@@ -77,7 +77,7 @@ function computerHidingDisplay(){
     turn = "Computer";
     demonOpacityReset();
     playerOpacityDrop();
-    display.style.fontSize= "6vh";  
+    display.style.fontSize= "2em";  
     demonHideSound.play();
     demonBoard.classList.add('fade');
     display.classList.add('fade');
