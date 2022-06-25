@@ -57,4 +57,11 @@ Getting started is pretty straight forward, the opening display box will tell yo
 - It would be fun to add some more levels of play that could include some slightly different game play to keep the user engaged. It's great that the game is operational, but it gets boring pretty quickly. 
 - I purposely built this game from a "mobile first" perspective and would like to use some media query to build a scalable version of the game to larger screens. 
 
+## !!NEW RELEASE June25th 2022!!
+### What's New
+- Added responsiveness for more mobile and dekstop devices
+- Hit accuracy calculated and displayed on win screen
+- Game feeback/banter added to win page that is responsive to accuracy %
+- minor performance updates
+
 
