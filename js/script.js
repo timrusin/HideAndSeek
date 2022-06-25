@@ -95,7 +95,6 @@ function computerHidingClick(){
         click1.play();
         let hidingSpot = compBoard.pop();
         compHiding.push(hidingSpot);
-        console.log(compHiding)
         cLives++;
         cpuLives.innerText = cLives;
         if (cLives === 4){
@@ -210,7 +209,7 @@ function calculateAccuracy(){
     
     function accuracyResponse(){
         if (accuracy === 100) {
-          winFeedback.innerText = "You are a true slayer!";
+          winFeedback.innerText = "You are a true Demogorgon slayer!";
         } else if (accuracy > 89) {
           winFeedback.innerText = "Papa would be proud";
         } else if (accuracy > 79) {
@@ -221,7 +220,7 @@ function calculateAccuracy(){
           winFeedback.innerText =
             "I'm really regretting going into that with you now";
         } else if (accuracy > 19) {
-          winFeedback.innerText = "We barely got out of there allive!";
+          winFeedback.innerText = "We barely got out of there alive!";
         } else
           winFeedback.innerText =
             "We still have our lives, but we need to get better at this";
