@@ -27,10 +27,15 @@ const winner = document.querySelector(".winner");
 const loser = document.querySelector(".loser");
 const restartBtn = document.querySelectorAll(".restart-button");
 restartBtn.forEach((button) => button.addEventListener("click", restart));
+const accuracyOutput = document.querySelector(".accuracyOutput");
+const winFeedback = document.getElementById("winFeedback")
 
 //global variables
 let pLives = 0; 
 let cLives = 0;  
+let tries = 0;
+let hits = 0;
+let accuracy = 0;
 const hiding = "HIDE";  
 const seeking = "SEEK"; 
 let turn;
@@ -90,6 +95,7 @@ function computerHidingClick(){
         click1.play();
         let hidingSpot = compBoard.pop();
         compHiding.push(hidingSpot);
+        console.log(compHiding)
         cLives++;
         cpuLives.innerText = cLives;
         if (cLives === 4){
@@ -118,6 +124,7 @@ function playerTurnSearch(event){
     const hidingSpot = event.target;
     const spotNumber = parseInt(hidingSpot.dataset.index);
     click1.play();
+    tries +=1
     if (compHiding.indexOf(spotNumber) === -1){
         hidingSpot.innerText=seeking;
         hidingSpot.classList.add ('playerSeek');
@@ -129,7 +136,8 @@ function playerTurnSearch(event){
         hidingSpot.classList.add('c-found');
         hidingSpot.innerText = "FOUND";
         playerFind.play();
-        
+        hits +=1
+
         //to prevent double Guess
         if (hidingSpot.innerText !== ""){
             hidingSpot.removeEventListener("click", playerTurnSearch)};
@@ -192,20 +200,47 @@ function gameOverWin(){
     winMusic.volume= .75;
     winner.style.opacity = "1";
     winner.style.pointerEvents = "auto";
-}
-function gameOverLose(){
-    music.pause();
-    loseSound.play();
-    loseMusic.loop = true;
-    loseMusic.play();
-    loser.style.opacity = "1"; 
-    loser.style.pointerEvents = "auto";
+    calculateAccuracy()
 }
 
-//This function is restarting the game when the "restart-button" is clicked
-function restart(){
-    click1.play();
-    window.location.reload();
+function calculateAccuracy(){
+    accuracy = Math.round(hits/tries*100)
+    accuracyOutput.innerText=accuracy+"%"
+    accuracyResponse()
+    
+    function accuracyResponse(){
+        if (accuracy === 100) {
+          winFeedback.innerText = "You are a true slayer!";
+        } else if (accuracy > 89) {
+          winFeedback.innerText = "Papa would be proud";
+        } else if (accuracy > 79) {
+          winFeedback.innerText = "Not too shabby";
+        } else if (accuracy > 60) {
+          winFeedback.innerText = "Phew, that was getting a little close";
+        } else if (accuracy > 39) {
+          winFeedback.innerText =
+            "I'm really regretting going into that with you now";
+        } else if (accuracy > 19) {
+          winFeedback.innerText = "We barely got out of there allive!";
+        } else
+          winFeedback.innerText =
+            "We still have our lives, but we need to get better at this";
+        }
+    }
+    
+    function gameOverLose(){
+        music.pause();
+        loseSound.play();
+        loseMusic.loop = true;
+        loseMusic.play();
+        loser.style.opacity = "1"; 
+        loser.style.pointerEvents = "auto";
+    }
+    
+    //This function is restarting the game when the "restart-button" is clicked
+    function restart(){
+        click1.play();
+        window.location.reload();
 }
 
 //opacity functions for gmae boards
