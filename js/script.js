@@ -27,10 +27,14 @@ const winner = document.querySelector(".winner");
 const loser = document.querySelector(".loser");
 const restartBtn = document.querySelectorAll(".restart-button");
 restartBtn.forEach((button) => button.addEventListener("click", restart));
+const accuracyOutput = document.querySelector(".accuracyOutput");
 
 //global variables
 let pLives = 0; 
 let cLives = 0;  
+let tries = 0;
+let hits = 0;
+let accuracy = 0;
 const hiding = "HIDE";  
 const seeking = "SEEK"; 
 let turn;
@@ -90,6 +94,7 @@ function computerHidingClick(){
         click1.play();
         let hidingSpot = compBoard.pop();
         compHiding.push(hidingSpot);
+        console.log(compHiding)
         cLives++;
         cpuLives.innerText = cLives;
         if (cLives === 4){
@@ -118,6 +123,7 @@ function playerTurnSearch(event){
     const hidingSpot = event.target;
     const spotNumber = parseInt(hidingSpot.dataset.index);
     click1.play();
+    tries +=1
     if (compHiding.indexOf(spotNumber) === -1){
         hidingSpot.innerText=seeking;
         hidingSpot.classList.add ('playerSeek');
@@ -129,7 +135,8 @@ function playerTurnSearch(event){
         hidingSpot.classList.add('c-found');
         hidingSpot.innerText = "FOUND";
         playerFind.play();
-        
+        hits +=1
+
         //to prevent double Guess
         if (hidingSpot.innerText !== ""){
             hidingSpot.removeEventListener("click", playerTurnSearch)};
@@ -192,6 +199,8 @@ function gameOverWin(){
     winMusic.volume= .75;
     winner.style.opacity = "1";
     winner.style.pointerEvents = "auto";
+    accuracy = Math.round(hits/tries*100)+"%"
+    accuracyOutput.innerText=accuracy
 }
 function gameOverLose(){
     music.pause();
