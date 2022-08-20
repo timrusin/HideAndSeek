@@ -97,7 +97,6 @@ function computerHidingClick(){
         click1.play();
         let hidingSpot = compBoard.pop();
         compHiding.push(hidingSpot);
-        console.log(compHiding);
         cLives++;
         cpuLives.innerText = cLives;
         if (cLives === 4){
