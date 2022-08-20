@@ -216,16 +216,16 @@ function calculateAccuracy(){
     function accuracyResponse(){
         if (accuracy === 100) {
           winFeedback.innerText = "You are a true Demogorgon slayer!";
-        } else if (accuracy > 89) {
-          winFeedback.innerText = "Papa would be proud";
         } else if (accuracy > 79) {
-          winFeedback.innerText = "Not too shabby";
-        } else if (accuracy > 60) {
+          winFeedback.innerText = "Papa would be proud";
+        } else if (accuracy > 69) {
+          winFeedback.innerText = "Not too shabzby";
+        } else if (accuracy > 40) {
           winFeedback.innerText = "Phew, that was getting a little close";
-        } else if (accuracy > 39) {
+        } else if (accuracy > 19) {
           winFeedback.innerText =
             "I'm really regretting going into that with you now";
-        } else if (accuracy > 19) {
+        } else if (accuracy > 9) {
           winFeedback.innerText = "We barely got out of there alive!";
         } else
           winFeedback.innerText =
