@@ -34,6 +34,8 @@ const winFeedback = document.getElementById("winFeedback")
 let pLives = 0; 
 let cLives = 0;  
 let tries = 0;
+let compTries = 0;
+let compHits = 0;
 let hits = 0;
 let accuracy = 0;
 const hiding = "HIDE";  
@@ -95,6 +97,7 @@ function computerHidingClick(){
         click1.play();
         let hidingSpot = compBoard.pop();
         compHiding.push(hidingSpot);
+        console.log(compHiding);
         cLives++;
         cpuLives.innerText = cLives;
         if (cLives === 4){
@@ -165,7 +168,6 @@ function computerTurnSearch(){
     if (turn !== "Computer") return;
     compHidingOptions.sort((a,b) => 0.5 - Math.random());
     let guess = compHidingOptions.pop();
-    console.log(guess); //remove this for production!!
     compGuesses.push(guess);
     const spot = playerTiles[guess];
     click1.play();
@@ -173,12 +175,14 @@ function computerTurnSearch(){
         spot.innerText = seeking;
         spot.classList.add ('computerSeek');
         playerTurnDisplay();
+        compTries +=1
     }else{
         pLives --;
         playerLives.innerText = pLives;
         spot.classList.add('p-found')
         spot.innerText = "FOUND";
         compFind.play();
+        compHits +=1
         checkForLoss()
     }
 }
@@ -202,8 +206,13 @@ function gameOverWin(){
     calculateAccuracy()
 }
 
+//these functions calculate and display game accuracy
 function calculateAccuracy(){
-    accuracy = Math.round(hits/tries*100)
+    playerAccuracy = Math.round(hits/tries*100)
+    console.log(playerAccuracy);
+    compAccuracy = Math.round(compHits/compTries*100)
+    playerAccuracy < 100 ? accuracy = playerAccuracy + compTries : accuracy = 100 
+    console.log(accuracy);
     accuracyOutput.innerText=accuracy+"%"
     accuracyResponse()
     
