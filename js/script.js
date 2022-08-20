@@ -208,10 +208,8 @@ function gameOverWin(){
 //these functions calculate and display game accuracy
 function calculateAccuracy(){
     playerAccuracy = Math.round(hits/tries*100)
-    console.log(playerAccuracy);
     compAccuracy = Math.round(compHits/compTries*100)
     playerAccuracy < 100 ? accuracy = playerAccuracy + compTries : accuracy = 100 
-    console.log(accuracy);
     accuracyOutput.innerText=accuracy+"%"
     accuracyResponse()
     
